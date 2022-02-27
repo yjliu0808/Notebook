@@ -1,6 +1,6 @@
 ### 一、操作系统
 
-[Linux](https://github.com/yjliu0808/Notebook/blob/master/Notebooklist.md)
+[Linux](https://github.com/yjliu0808/Notebook/blob/master/docs/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
 
 ### 二、数据库
 
