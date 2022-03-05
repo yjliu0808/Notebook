@@ -10,6 +10,10 @@
 
 ### 五、常用软件
 
+[Jemter安装](https://github.com/yjliu0808/Notebook/blob/master/docs/jmeter%E5%AE%89%E8%A3%85.md)
+
+
+
 ### 六、其他
 
 ### 七、后记
