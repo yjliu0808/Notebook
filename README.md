@@ -8,6 +8,8 @@
 
 ### 四、性能测试
 
+[性能-基本概念](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E2%80%94%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51.md)
+
 ### 五、常用软件
 
 [Jemter安装](https://github.com/yjliu0808/Notebook/blob/master/docs/jmeter%E5%AE%89%E8%A3%85.md)
