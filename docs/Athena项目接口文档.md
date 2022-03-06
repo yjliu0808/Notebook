@@ -4,20 +4,20 @@
 
 #### API 说明
 
-```json
+```java
 请求方法:*POST/GET* 
 请求头：Content-Type：application/json;charset=utf-8 
 Accept：application/json 
 ```
 
-```json
+```java
 返回的数据
 { “code”:0, "msg":"调用成功", "data":{} }
 ```
 
 #### 接口名称：注册 
 
-```json
+```java
 调用地址:/app/mobile/api/user/register
 HTTP方法:post
 请求格式:json
@@ -36,7 +36,7 @@ HTTP方法:post
 | email    | String | 否       | 用户邮箱                            |
 | code     | String | 是       | 验证码                              |
 
-```json
+```java
 请求示例1：
 {"mobile":"13246520010","password":"123456","code":"1234","platform":"windows","username":"Athena","sex":0,"age":20,"email":"1234562001@163.com"}
 请求示例2：
@@ -62,7 +62,7 @@ HTTP方法:post
 | gqid     | String | 是       | 手机号或 gqid 其中一个 |
 | password | String | 是       | 密码                   |
 
-```json
+```java
 请求示例1：
 {"mobile":"13246520010","password":"123456","gqid":"13246520010"}
 请求示例2：
