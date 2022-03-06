@@ -48,7 +48,7 @@ HTTP方法:post
 
 #### 接口名称：登录
 
-```json
+```Java
 调用地址:/app/mobile/api/user/login
 HTTP方法:post
 请求格式:json
