@@ -9,6 +9,7 @@
 ### :bulb: 性能测试
 
 - [性能-基本概念](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E2%80%94%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B51.md)
+- [性能-jmeter脚本](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-jmeter%E8%84%9A%E6%9C%AC.md)
 
 ### :wrench:常用软件
 
@@ -21,3 +22,4 @@
 #### :watermelon:关于	
 
 本仓库主要是根据计算机经典书籍,网上的教学视频以及官方技术文档进行总结的学习笔记.
+
