@@ -69,7 +69,28 @@ HTTP方法:post
 {"mobile":"13246520015","password":"123456","gqid":"4000002"}
 响应数据：
 {"code":0,"msg":"成功调用","data":{"id":160061,"username":"Athena","sex":0,"age":20,"mobile":"13246520010","email":"1234562001@163.com","gqid":"4000001","money":0.0,"pmoney":100.0,"createtime":1646574796000,"lasttime":1646575383092,"token":"Co3LD577nOpXlQn4DfSLcq75wU1RLALfOMDQMZIe6ZUhdB0ts6uvtJOQJ+/uLdBPxRU/jxaEwo/fQbjJJq9BrA==","identity":"dc3294b90bcfd501"}}
+```
 
+#### 接口名称：重置支付密码
 
+```Java
+调用地址:/app/mobile/api/user/resetpaypwd
+HTTP方法:post
+请求格式:json
+功能详述:修改用户支付密码
+调用参数说明:
+```
+
+| 名称     | 类型   | 是否必须 | 描述                           |
+| :------- | ------ | -------- | ------------------------------ |
+| token    | String | 是       | 用户访问令牌                   |
+| password | String | 是       | 新密码,md5，小写,32 位(string) |
+
+```java
+请求示例1：
+{"token":"Co3LD577nOpXlQn4DfSLcq75wU1RLALfOMDQMZIe6ZUhdB0ts6uvtJOQJ+/uLdBPxRU/jxaEwo/fQbjJJq9BrA==","password":"12345678"}
+响应数据：
+无,根据 code 来判断是否成功
+{"code":0,"msg":"成功调用","data":{}}
 ```
 

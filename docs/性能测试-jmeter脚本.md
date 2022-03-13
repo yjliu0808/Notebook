@@ -69,8 +69,6 @@
 
 #### 6.jmeter脚本元件（持续补充）
 
-<div align="left"> <img src="pics/jmeter元件.png" width="800"/> </div><br>
-
 ##### 1.线程组
 
 + 线程组：**进行性能场景设计**(模拟多个用户)
@@ -105,6 +103,7 @@
   1. 位置：测试计划/配置元件/用户定义的变量
   2. 作用域：全局变量,作用整个测试计划
   3. 每次启动运行获取一次值，过程中不再改变，运行过程无法动态获取值
+  
 - 用户参数
   1. 位置：测试计划/前置处理器/用户参数、线程组/前置处理器/用户参数
   2. 作用域：<u>局部变量,当前线程组或者当前的取样器</u>
@@ -133,6 +132,10 @@
   5. 【用户定义的变量】设置为手机号,线程数设置3,运行注册+登录接口：1次注册success,3次登录success
 
   6. 【用户参数】设置为手机号，线程数设置3，运行注册+登录接口：3次注册success，0次登录success
+  
+  7. 备注：用户参数内【每次迭代更新一次】选择勾选后，线程组内执行过程中参数不变，比如注册后直接登录。
+  
+     <div align="left"> <img src="pics/jmeter用户变量33.png" width="800"/> </div><br>
 
 #### 8.jmeter函数助手
 
@@ -152,42 +155,86 @@
 
 - 常用函数：
 
-  | 函数名称         | 含义                   |
-  | ---------------- | ---------------------- |
-  | __Random         | 生成随机整数           |
-  | __RandomDate     | 生成随机日期           |
-  | __RandomString   | 生成随机字符串         |
-  | __setProperty    | 设置属性               |
-  | __property       | 读取属性               |
-  | __P              | 读取属性               |
-  | __V              | 拼接字符串             |
-  | __time           | 返回指定格式的当前时间 |
-  | __MD5            | 将字符串MD5加密        |
-  | __UUID           | 生成随机UUID字符串     |
-  | __threadNum      | 线程的编号             |
-  | __TestPlanName   | 测试计划名称           |
-  | __StringFromFile | 从文件中读取一行       |
-  | __strLen         | 字符串长度             |
-  | __split          | 将字符串拆分为变量     |
-  | __substring      | 提取字符串的子串       |
-  | __machineName    | 机器名                 |
-  | __machineIP      | 机器IP                 |
-  | __isDefined      | 判断变量是否已存在     |
-  | __BeanShell      | 可执行beanshell脚本    |
-  | __char           | 根据unicode生成字符    |
-  | __chooseRandom   | 从指定的范围里面取值   |
-  | __counter        | 计数器                 |
-  | __env            | 获取环境变量的值       |
-  | __eval           | 读取变量表达式         |
-  | __FileToString   | 读取文件               |
-  | __intSum         | 两个或多个整数的总和   |
-  | __longSum        | 两个或多个长值的总和   |
-  | __digest         | 将字符串加密           |
-  | __if             | if 判断                |
-  | __iterationNum   | 线程循环次数           |
-  | __timeshift      | 时间移动               |
+  | 函数名称       | 含义                 | 函数名称          | 含义                     |
+  | -------------- | -------------------- | ----------------- | ------------------------ |
+  | __Random       | 生成随机整数         | __timeShift       | 数据格式化               |
+  | __RandomDate   | 生成随机日期         | __dateTimeConvert | 时间格式转换             |
+  | __RandomString | 生成随机字符串       | __time            | 返回指定格式的当前时间戳 |
+  | __setProperty  | 设置属性             | __threadNum       | 线程的编号               |
+  | __property     | 读取属性             | __TestPlanName    | 测试计划名称             |
+  | __P            | 读取属性             | __StringFromFile  | 从文件中读取一行         |
+  | __V            | 拼接字符串           | __iterationNum    | 线程循环次数             |
+  | __strLen       | 字符串长度           | __if              | if 判断                  |
+  | __MD5          | 将字符串MD5加密      | __digest          | 将字符串加密             |
+  | __UUID         | 生成随机UUID字符串   | __intSum          | 两个或多个整数的总和     |
+  | __split        | 将字符串拆分为变量   | __longSum         | 两个或多个长值的总和     |
+  | __substring    | 提取字符串的子串     | __FileToString    | 读取文件                 |
+  | __isDefined    | 判断变量是否已存在   | __eval            | 读取变量表达式           |
+  | __counter      | 计数器========       | __env             | 获取环境变量的值         |
+  | __chooseRandom | 从指定的范围里面取值 | __BeanShell       | 可执行beanshell脚本      |
+  | __char         | 根据unicode生成字符  | __machineName     | 机器名                   |
+  | __machineIP    | 机器IP               |                   |                          |
+  
+  
 
-#### 9
+#### 9.计数器函数&计数器元件
+
+- 计数器函数：${__counter(,)} ：只有+1功能
+
++ 计数器元件：
+
+  1.  可设置初始值,最大值,如果运行结果超过最大值时,又会从起始值开始循环
+
+     <div align="left"> <img src="pics/jmeter-计数器设置.png" width="800"/> </div><br
+
+     <div align="left"> <img src="pics/jmeter-计数器1.png" width="800"/> </div><br
+
+  2. 与每用户独立的跟踪计数器勾选后，按照线程计数
+
+     <div align="left"> <img src="pics/jmeter-计数器3.png" width="800"/> </div><br
+
+     <div align="left"> <img src="pics/jmeter-计数器2.png" width="800"/> </div><br
+
+#### 10.函数使用
+
+- ${__dateTimeConvert(,,,)}   时间格式转换
+
+```java
+${__dateTimeConvert(01212018,MMddyyyy,dd/MM/yyyy,)}
+${__dateTimeConvert(1526574881000,,dd/MM/yyyy HH:mm,)}
+```
+
+<div align="left"> <img src="pics/dateTimeConvert.png" width="800"/> </div><br
+
++ ${__time(,)}  获取**当前时间戳函数**：当前的时间
+
++ ${__timeShift(,,,,)}  数据格式化
+
++ ${__RandomDate(,,,,)}  随机日期：不包括结束日期
+
++ ${__digest(,,,,)}  **加密**  简单加密
+
+  <div align="left"> <img src="pics/jmeter-函数算法.png" width="800"/> </div><br
+
++ ${__intSum(,,)}  整数相加函数
+
++ ${__P(,)}   **获取属性函数**
+
+  <div align="left"> <img src="pics/jmeter属性显示.png" width="800"/> </div><br
+
+- 设置jmeter的动态属性：（可跨线程使用用户参数）
+
+  - 步骤一：新增用户参数var，设置取值：${__Random(1000,9999)
+
+  - 步骤二：设置属性显示：${__setProperty(pro_var1,${var},)}
+
+  - 步骤三：运行动态设置参数：${__setProperty(pro_var1,${var},)}
+  
+  - 步骤四：可跨线程获得动态用户参数：${__P(pro_var1,)}
+  
+    <div align="left"> <img src="pics/jmeter用户属性A.png" width="800"/> </div><br
+
+
 
 
 
