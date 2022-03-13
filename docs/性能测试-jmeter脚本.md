@@ -199,14 +199,14 @@
 
 - ${__dateTimeConvert(,,,)}   时间格式转换
 
-```java
-${__dateTimeConvert(01212018,MMddyyyy,dd/MM/yyyy,)}
-${__dateTimeConvert(1526574881000,,dd/MM/yyyy HH:mm,)}
-```
+  ```java
+  ${__dateTimeConvert(01212018,MMddyyyy,dd/MM/yyyy,)}
+  ${__dateTimeConvert(1526574881000,,dd/MM/yyyy HH:mm,)}
+  ```
 
-<div align="left"> <img src="pics/dateTimeConvert.png" width="800"/> </div><br
+  <div align="left"> <img src="pics/dateTimeConvert.png" width="800"/> </div><br
 
-+ ${__time(,)}  获取**当前时间戳函数**：当前的时间
+- ${__time(,)}  获取**当前时间戳函数**：当前的时间
 
 + ${__timeShift(,,,,)}  数据格式化
 
