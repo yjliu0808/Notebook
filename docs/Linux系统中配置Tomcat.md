@@ -1,4 +1,4 @@
-###  Linux系统中部署jtomcat
+###  Linux系统中部署tomcat
 
 - 前提准备：成功安装jdk环境[（jdk安装步骤）](https://blog.csdn.net/weixin_41982514/article/details/109005972)
 

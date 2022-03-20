@@ -148,3 +148,8 @@
   3. read()方法将excel数据读取到输入流，然后通过ExcelImportUtil.importExcel()封装到实体类;
   4. 最后将返回实体类对象到注册接口作为请求参数，restassured完成请求。
 
+#### 3.excel文件回写
+
+### 4.Testng注解
+
+#### 5.JSONPath断言
