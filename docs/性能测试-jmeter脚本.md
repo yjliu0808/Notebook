@@ -67,7 +67,7 @@
 
   <div align="left"> <img src="pics/jmeter-路径.png" width="800"/> </div><br>
 
-#### 6.jmeter脚本元件（持续补充）
+#### 6.jmeter脚本元件
 
 ##### 1.线程组
 
@@ -218,11 +218,21 @@
 
 + ${__intSum(,,)}  整数相加函数
 
++ ${__V(,)} 拼接函数应用：
+
+  - 变量var_1、var_2、var_3,动态获取变量名称可用v函数拼。
+
+  - 计数器函数：${__counter(,)}------var变量名称+计数器函数，通过v函数拼接实现动态变量
+
+    <div align="left"> <img src="pics/jmeter-v函数.png" width="800"/> </div><br
+
+    <div align="left"> <img src="pics/jmeter-v函数2.png" width="800"/> </div><br
+
 + ${__P(,)}   **获取属性函数**
 
   <div align="left"> <img src="pics/jmeter属性显示.png" width="800"/> </div><br
 
-- 设置jmeter的动态属性：（可跨线程使用用户参数）
+- 设置jmeter的动态属性：（可跨线程使用用户参数）----关闭jmeter就会自动释放
 
   - 步骤一：新增用户参数var，设置取值：${__Random(1000,9999)
 
@@ -232,11 +242,50 @@
   
   - 步骤四：可跨线程获得动态用户参数：${__P(pro_var1,)}
   
+  - 备注：jmeter工具属性可能被改变，系统属性无法改变
+  
     <div align="left"> <img src="pics/jmeter用户属性A.png" width="800"/> </div><br
 
 
 
+#### 11.jmeter执行顺序
 
+<div align="left"> <img src="pics/jmeter-执行顺序.png" width="800"/> </div><br
+
+- 多个线程在执行时，【默认】并行执行。
+
+  <div align="left"> <img src="pics/jmeter线程组顺序.png" width="800"/> </div><br
+
+  
+
+- 查看结果树中的显示顺序是，根据收到响应的先后顺序显示
+
+- jmeter中取样器的执行顺序：在没有逻辑控制器控制时，顺序是从上往下，不管多少人并发，每个线程用户都是从上往下执行,会出现取样器的执行顺序与查看结果树中的显示顺序不一致。
+
+#### 12.响应结果json提取器
+
+- json提取器 :
+
+  ```java
+  {"code":0,"msg":"成功调用","data":{"id":160132,"username":"4000068"}
+  - $.节点名称.二级节点名称(绝对路径)    $.data.id   
+  - $..末梢节点名称(相对路径)           $..id
+  ```
+
+- 一个json提取器写多个json提取式:英文分号相隔、默认值(default value)必须填写
+
+  <div align="left"> <img src="pics/jmeter-json提取器.png" width="800"/> </div><br
+
+- 正则提取器：左边界(正则式)右边界
+
+  ```java
+  {"code":0,"msg":"成功调用","data":{"id":160132,"token":"mGfp5oBuUEMged6SmYJoC29enkX7ZKf2ocjZ/3mb+oP0MulHw9WR+2ZzIo4G6X/kxRU/jxaEwo/fQbjJJq9BrA=="}
+  token":"(.*?)"----一个正则提取器
+  多个正则提取式，分隔符用 (.*?)    
+  $1$模板1指第1个括号内   
+  ```
+
+  <div align="left"> <img src="pics/jmeter正则表达.png" width="800"/> </div><br
 
 
 

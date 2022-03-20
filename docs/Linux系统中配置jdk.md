@@ -75,6 +75,12 @@ eg: tar zxvf j
   source /etc/profile
   ```
 
+- 5.6修改权限
+
+- ```java
+  chmod 777 /usr/local/java/jdk/jdk1.7.0_80/bin/java
+  ```
+
 - 6.验证是否配置jdk成功
 
 - ```java
