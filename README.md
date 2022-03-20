@@ -1,6 +1,6 @@
 ### :computer: 操作系统
 
-- [Linux](https://github.com/yjliu0808/Notebook/blob/master/docs/linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.md)
+- [Linux基础](https://github.com/yjliu0808/Notebook/blob/master/docs/linux%E5%9F%BA%E7%A1%80.md)
 - [Linux系统中配置tomcat](https://github.com/yjliu0808/Notebook/blob/master/docs/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%85%8D%E7%BD%AETomcat.md)
 - [Linux系统中配置jdk](https://github.com/yjliu0808/Notebook/blob/master/docs/Linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E9%85%8D%E7%BD%AEjdk.md)
 
