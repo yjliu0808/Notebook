@@ -51,9 +51,7 @@ driver.get("http://www.baidu.com");
 
 Selenium WebDriver原理
 
-<div align="center"> <img src="pics/b.png" width="1000"/> </div><br>
-
-
+- 启动driver驱动，客户端根据json wire protocol协议可以通过不同语言向driver发起请求（比如Java、python等）。驱动解析请求，并在浏览器上执行相应的操作，并把执行结果返回给客户端。
 
 ### 附录:环境问题整理
 

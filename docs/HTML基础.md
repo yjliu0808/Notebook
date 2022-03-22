@@ -232,7 +232,7 @@ div块级元素，用于组合其他 HTML 元素的容器,常用作进行页面�
 
 - HTML DOM（Document Object Model，文档对象模型）
 
-![image-20201206205628202](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20201206205628202.png)
+  <div align="left"> <img src="pics/HTMLDOM.png" width="800"/> </div><br>
 
 通过可编程的对象模型，JavaScript 可以
 
