@@ -393,6 +393,28 @@ eg:locate lyj  查找文件lyj的文件位置
 
 #### 4.8关机重启命令
 
+###    第十讲 Shell基础 
+
+####  10.1Shell概述
+
+- Shell解释执行的脚本语言，在shell中可直接调用Linux系统命令 
+
+#### 10.2第一个脚本:
+
+```shell
+vim hello.sh 
+#!/bin/bash
+#!第一个脚本
+echo "Hello , Athna, this is sunday!"
+脚本执行：
+赋予执行权限，直接运行：
+chmod 755 hello.sh
+./hello.sh
+通过bash调用执行脚本
+bash hello.sh
+
+```
+
 
 
 
