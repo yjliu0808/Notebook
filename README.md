@@ -6,9 +6,16 @@
 
 ### :floppy_disk: 数据库
 
+- [MySQL](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86.md)
+
 ### :coffee: 自动化测试
 
 - [**自动化测试-Java-Demo**](https://github.com/yjliu0808/Notebook/blob/master/docs/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95-Java-Demo.md)
+- [HTML基础](https://github.com/yjliu0808/Notebook/blob/master/docs/HTML%E5%9F%BA%E7%A1%80.md)
+- [JAVA基础](https://github.com/yjliu0808/Notebook/blob/master/docs/java%E5%9F%BA%E7%A1%80.md)
+- [Python](https://github.com/yjliu0808/Notebook/blob/master/docs/python%E5%9F%BA%E7%A1%80.md)
+- [GO编程](https://github.com/yjliu0808/Notebook/blob/master/docs/go%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80.md)
+- [web自动化基础](https://github.com/yjliu0808/Notebook/blob/master/docs/web%E8%87%AA%E5%8A%A8%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86.md)
 
 ### :bulb: 性能测试
 
@@ -17,9 +24,15 @@
 
 ### :wrench:常用软件
 
+- [**github配置指南**](https://github.com/yjliu0808/Notebook/blob/master/docs/github%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.md)
+
+- [git命令速查手册](https://github.com/yjliu0808/Notebook/blob/master/docs/Git%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C.md)
+
 - [Jemter安装](https://github.com/yjliu0808/Notebook/blob/master/docs/jmeter%E5%AE%89%E8%A3%85.md)
 
 ### :cloud:其他
+
+- [软件测试-理论](https://github.com/yjliu0808/Notebook/blob/master/docs/%E7%B3%BB%E7%BB%9F%E6%B5%8B%E8%AF%95%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5.md)
 
 - [Activiti工作流管理系统API](https://github.com/yjliu0808/Notebook/blob/master/docs/Activiti%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPI.md)
 - [Athena用户项目接口API](https://github.com/yjliu0808/Notebook/blob/master/docs/Athena%E7%94%A8%E6%88%B7%E9%A1%B9%E7%9B%AE%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
