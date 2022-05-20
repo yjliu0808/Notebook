@@ -422,3 +422,96 @@
 
 <div align="left"> <img src="pics/随机控制器1.png" width="800"/> </div><br>
 
+#### 19.jmeter-JDBC Request
+
+##### 如何引入jar包
+
+- [MavenRepository](https://mvnrepository.com)
+- Files  jar下载jar包,下载的jar包，放到jmeter的**lib**文件夹中
+
+<div align="left"> <img src="pics/MVn-jra1.png" width="800"/> </div><br>
+
+##### 注意事项
+
++ jar包引入后，jmeter可以发起jdbc请求，无jar包JDBC Request不能发起请求。
++ jmeter是用java开发，可以直接执行java代码
++ 重启jmeter，此时，jmeter就可以写jdbc请求了
++ mysql8与mysql5的驱动class不一样
+
+##### 数据库连接脚本
+
++ 添加配置元件 / JDBC Connection Configuration
+  + variable name for created pool： 自定义一个线程池变量名(全局变量可以跨线程调用)
+  + database Connection Configuration
+    + database URL: jdbc:mysql://106.75.169.238:3306/activiti
+    + jdbc driver class： 不同的数据库，驱动class不一样
+      + mysql: com.mysql.jdbc.Driver  只适用于mysql5版本
+      + mysql8是手写：com.mysql.cj.jdbc.Driver
++ jdbc request： 
+  + 连接池： 一定要与JDBC Connection Configuration中配置的连接池名称要一致
+  + sql query：select * from sys_user limit 2  /翻页sql:select * from sys_user limit 1 offset 10
+  + query type： select statement 、 update statement、 prepared select statement 、 prepared update statement 带有 prepared开头，是脚本中可以带有参数
+
+    + sql中带参数的写法： 
+      + 直接在sql中，进行变量引用  ${var} 不推荐-防止sql注入
+      + 用 ? 变量占位符推荐 
+
+<div align="left"> <img src="pics/JDBC1.png" width="800"/> </div><br>
+
+<div align="left"> <img src="pics/JDBCSQL.png" width="800"/> </div><br>
+
+<div align="left"> <img src="pics/JDBC2.png" width="800"/> </div><br>
+
+#### 20.DDT数据驱动-导出数据库中的数据
+
+##### 使用jmeter保存数据库中的数据
+
++ jdbc request  查询数据-保存到本地txt
+
++ 保存响应到文件
+  + 填写文件名称前缀
+  + 勾选： Don't add number to prefix
+  + 勾选： Don't add content type suffix
+  + 运行脚本， 保存文件，在jmeter的bin文件夹下
+
+<div align="left"> <img src="pics/保存响应文件1.png" width="800"/> </div><br>
+
+##### 导出数据库中的数据-保存本地sqlite数据库中
+
+1. sqlite-jdbc-3.31.1.jar--导入jar包
+
+2. JDBC Connection Configuration--配置sqlite参数
+
+   Connection Configuration：
+
+   + pool:自定义
+   + url:   jdbc:sqlite:自定义一个dbfile文件名.db
+   + class:   org.sqlite.JDBC
+   + user\password： 不需要填写
+
+   <div align="left"> <img src="pics/sqllite.png" width="800"/> </div><br>
+
+3. jdbc request 创建表 (默认保存文件位置:jmeter的bin文件夹下面有一个db文件)
+
+   ```mysql
+   create table if not exists'activiti_user'(id TEXt,username TEXt,nick_name TEXt)
+   ```
+
+   <div align="left"> <img src="pics/创建表1.png" width="800"/> </div><br>
+
+4. 循环控制器\计数器\V函数-完成将查询的数据再次写入sqllite数据库表
+
+   <div align="left"> <img src="pics/sqllite1.png" width="800"/> </div><br>
+
+5. 验证插入数据成功
+
+   <div align="left"> <img src="pics/sqllite3.png" width="800"/> </div><br>
+
+   用 ? 变量占位符填写错误报错如下:
+
+   <div align="left"> <img src="pics/SQL-报错1.png" width="800"/> </div><br>
+
+
+
+
+
