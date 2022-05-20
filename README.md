@@ -24,6 +24,8 @@
 
 ### :wrench:常用软件
 
+- [Fiddler作为代理服务器配置](https://github.com/yjliu0808/Notebook/blob/master/docs/Fiddler%E4%BD%9C%E4%B8%BA%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8.md)
+
 - [**github配置指南**](https://github.com/yjliu0808/Notebook/blob/master/docs/github%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97.md)
 
 - [git命令速查手册](https://github.com/yjliu0808/Notebook/blob/master/docs/Git%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C.md)
