@@ -16,7 +16,7 @@
 - 生成shh秘钥
 
   ```
-  ssh-keygen -t rsa -C "***********@***.com" 替换为你自己的邮箱
+   ssh-keygen -t rsa -C "yjliu0808@163.com"   替换为你自己的邮箱
   ```
 
 - Windows系统大概就在这个位置 下/c/Users/Administrator/.ssh/id_rsa.pub.中的内容即为刚生成的ssh秘钥
@@ -24,7 +24,21 @@
 
 <div align="center"> <img src="pics/git密钥路径.png" width="500"/> </div><br>
 
-- 打开github：
+- 也可以命令获取ssh密钥
+
+  ```
+  生成完密钥之后输入
+  cd ~/.ssh
+  ls -la
+  cat id_rsa.pub  （红色的部分就是密钥内容）
+  
+  ```
+
+  <div align="left"> <img src="pics/github_ssh.png" width="500"/> </div><br>
+
+- 打开github配置密钥
+
+  <div align="left"> <img src="pics/github_ssh_配置.png" width="500"/> </div><br>
 
 - 测试是否连接成功
 
