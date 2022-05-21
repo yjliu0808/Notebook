@@ -42,7 +42,7 @@
 
 #### 3.API文档
 
-- [查看](https://github.com/yjliu0808/Notebook/blob/master/docs/Athena%E9%A1%B9%E7%9B%AE%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
+- [查看](https://github.com/yjliu0808/Notebook/blob/master/docs/Athena%E7%94%A8%E6%88%B7%E9%A1%B9%E7%9B%AE%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
 
 #### 4.运行简单的jmeter脚本
 
