@@ -249,25 +249,50 @@ ab -n 400 -c20  -p  parm.txt  -T "application/x-www-form-urlencoded" http://loca
 
 <div align="left"> <img src="pics/ngrinder6.png" width="800"/> </div><br>
 
-#### 6.配置ngrinder-agent
+#### 6.配置ngrinder-agent(代理)
 
-+ web管理的登录名， 下载代理   这种方法下载的代理agent的配置文件，已经修改，不需要再次修改
-  + 如果不是这种方法下载，那么就要修改 agent.conf配置文件中controller的ip地址
-+ 解压包  tar -xvf ngrinder-agent-xxxxx.tar
-+ agent部署在非被测服务器上
-+ 启动
+##### 1.下载agent
+
++ web管理的登录名,下载代理,此方法下载的代理agent的配置文件已经修改,不需要再次修改.如果不是此方法下载,那么就要修改 agent.conf配置文件中controller的ip地址.
+
+  <div align="left"> <img src="pics/agent1.png" width="800"/> </div><br>
+
+  
+
+##### 2.agent部署在非被测服务器上
+
+```
+上传至服务器并解压:
+tar -xvf ngrinder-agent-3.5.2-192.168.86.134.tar 
+```
+
+  <div align="left"> <img src="pics/agent2.png" width="800"/> </div><br>
+
+##### 3.agent启动
 
 ```sh
 # sh 结尾的linux文件
-./run_agent.sh    # 交互模式运行
-./run_agent_bg.sh  # 后台运行
 ./run_agent_internal.sh  # 第一次是初始化运行
+./run_agent.sh             # 交互模式运行
+./run_agent_bg.sh       # 后台运行
 ```
 
+  <div align="left"> <img src="pics/agent4.png" width="800"/> </div><br>
 
+- 代理管理查看启动成功
 
-+ 性能测试：
-  + 菜单 》 性能测试
-  + 目标主机： 被测服务器的ip地址  ------千万不要忘记
+   <div align="left"> <img src="pics/agent3.png" width="800"/> </div><br>
 
-ngrinder进行性能测试，是 进程 + 线程的组合模式
+#### 7.执行性能测试
+
++ 菜单->性能测试->创建测试
+
++ ngrinder进行性能测试=进程 + 线程的组合模式
+
++ 目标主机： 被测服务器的ip地址(注意)
+
+   <div align="left"> <img src="pics/ngrinder8.png" width="800"/> </div><br>
+
+   <div align="left"> <img src="pics/ngrinder7.png" width="800"/> </div><br>
+
+  
