@@ -428,21 +428,21 @@
 
 #### 19.jmeter-JDBC Request
 
-##### 如何引入jar包
+##### 1.如何引入jar包
 
 - [MavenRepository](https://mvnrepository.com)
 - Files  jar下载jar包,下载的jar包，放到jmeter的**lib**文件夹中
 
 <div align="left"> <img src="pics/MVn-jra1.png" width="800"/> </div><br>
 
-##### 注意事项
+##### 2.注意事项
 
 + jar包引入后，jmeter可以发起jdbc请求，无jar包JDBC Request不能发起请求。
 + jmeter是用java开发，可以直接执行java代码
 + 重启jmeter，此时，jmeter就可以写jdbc请求了
 + mysql8与mysql5的驱动class不一样
 
-##### 数据库连接脚本
+##### 3.数据库连接脚本
 
 + 添加配置元件 / JDBC Connection Configuration
   + variable name for created pool： 自定义一个线程池变量名(全局变量可以跨线程调用)
@@ -468,7 +468,7 @@
 
 #### 20.DDT数据驱动-导出数据库中的数据
 
-##### 使用jmeter保存数据库中的数据
+##### 1.使用jmeter保存数据库中的数据
 
 + jdbc request  查询数据-保存到本地txt
 
@@ -480,7 +480,7 @@
 
 <div align="left"> <img src="pics/保存响应文件1.png" width="800"/> </div><br>
 
-##### 导出数据库中的数据-保存本地sqlite数据库中
+##### 2.导出数据库中的数据-保存本地sqlite数据库中
 
 1. sqlite-jdbc-3.31.1.jar--导入jar包
 
