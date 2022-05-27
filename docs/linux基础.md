@@ -1,34 +1,37 @@
 
 
+[Linux视频](https://www.bilibili.com/video/BV1mW411i7Qf?p=4&spm_id_from=pageDriver)
+
 ### linux发展历史
 
-内核相同,发行版本不一致，选择linux系统，以CentOS
+- 内核相同,发行版本不一致，选择linux系统，以CentOS
+
 
 <div align="center"> <img src="pics/linux1.png" width="800"/> </div><br>
 
 ### 第一讲、Linux系统简介
 
-开源软件:apache、nginx、mysql、php、samba、python....
-
-开源(开发源代码)并不是免费，
-
-lamp:linux、apache、mysql、php(编程语言)
-
-www.netcraft.com 踩点、扫描、访问的网站服务器是什么
-
-为什么选择命令行：定位不同，一般不用图形界面
-
-解决问题的智慧：不是马上问别人，
-
-1.提示信息、帮助文档、示例、查找
-
-2.英文的困惑：Command not found、No Such file or directory
-
-linux中主要英文单词的背诵、
-
-计划、坚持、专注、练习、
 
 
+<div align="center"> <img src="pics/linux2.png" width="800"/> </div><br>
+
+- 开源软件:apache、nginx、mysql、php、samba、python
+- lamp:linux、apache、mysql、php(编程语言)
+
+<div align="center"> <img src="pics/linux3.png" width="800"/> </div><br>
+
+- www.netcraft.com 踩点技术、扫描
+
+- 为什么选择命令行：定位不同，一般不用图形界面
+
+- 解决问题的智慧：不是马上问别人，自学能力
+
+- 1.提示信息、帮助文档、示例、查找
+- 2.英文的困惑：Command not found、No Such file or directory
+
+- linux中主要英文单词的背诵、
+
+- 计划、坚持、专注、练习、
 
 ### 第二讲、linux系统安装
 
@@ -419,7 +422,7 @@ bash hello.sh
 
 
 
-
+待
 
 
 
