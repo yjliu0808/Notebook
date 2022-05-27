@@ -2,9 +2,9 @@
 
 ### linux发展历史
 
-内核相同,发行版本不一致
+内核相同,发行版本不一致，选择linux系统，以CentOS
 
-选择linux系统，以CentOS
+<div align="center"> <img src="pics/linux1.png" width="800"/> </div><br>
 
 ### 第一讲、Linux系统简介
 
@@ -27,6 +27,8 @@ www.netcraft.com 踩点、扫描、访问的网站服务器是什么
 linux中主要英文单词的背诵、
 
 计划、坚持、专注、练习、
+
+
 
 ### 第二讲、linux系统安装
 
