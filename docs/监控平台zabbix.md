@@ -34,6 +34,8 @@ enable =1
 yum install zabbix-web-mysql-scl zabbix-nginx-conf-scl -y 
 ```
 
+<div align="left"> <img src="pics/zabbix5.png" width="500"/> </div><br>
+
 2.安装mysqld
 
 ```sh
@@ -60,7 +62,7 @@ systemctl restart mysqld
 
 ```
 grep "password" /var/log/mysqld.log
-# 复制密码 (1Hatgt*qc1yh) zGIckLeeh9%o
+# 复制密码 BabZ5aLn!pjQ
 mysql -uroot -p回车
 上面复制密码  回车
 ALTER USER 'root'@'localhost' IDENTIFIED BY '123456';
