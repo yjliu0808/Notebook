@@ -135,13 +135,6 @@
   + swap: 交互分区
   + http://testingpai.com/article/1626769424453
 
-+ vmstat
-+ pidstat
-+ iostat
-+ netstat
-+ sar....
-
-# 20210730白板
 
 + load average: 
 + Task   Thread  两个数字不相同，  Thread数字大于Task数字， 因为 一个进程可能有多个线程
@@ -280,7 +273,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
   + yum install dstat -y
   + dstat -lcmdry
 
-# 20210802白板
+# 
 
 + 性能分析命令：
   + top
@@ -339,7 +332,7 @@ load average = cpuload  + ioload
   + 自愿上下文切换： 资源不够，自觉的切换到另外指令上
   + 非自愿上下文切换： 有可能有优先级更高的指令、指令执行的时间已经到了，被迫中止当前的指令，去执行其他指令
 
-# 20210804白板
+# 
 
 + top、 mpstat
 
@@ -472,7 +465,7 @@ stress-ng --cpu `nproc` --pthread 1024 --timeout 60
 
 Ø6、pidstat: cswch/s **自愿上下文切换** 升高
 
-# 20210806白板
+# 
 
 + 实战
 
@@ -548,7 +541,7 @@ stress-ng --cpu `nproc` --pthread 1024 --timeout 60
 
     
 
-# 20210809白板
+# 
 
 + 内存
   + 内存地址  + 内存存储单元
@@ -632,7 +625,7 @@ FGC:Major GC
 
     
 
-# 20210811白板
+# 
 
 + oom项目环境部署
   + 准备一台linux
@@ -703,7 +696,7 @@ cpu相关问题，应用服务器中高频率
   + 服务器 最大存储空间，但是速度比较慢
   + 磁盘的格式化： 最大化的利用磁盘，以及加快磁盘的读写	
 
-# 20210813白板
+# 
 
 + 内存
 
