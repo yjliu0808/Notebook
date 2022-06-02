@@ -164,9 +164,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
   + st
 ```
 
-
-
-
+#### 4.mpstat命令
 
 + sysstat的工具包，这个工具包中带了很性能分析命令`yum install sysstat -y`
   + mpstat  查看cpu的相关数据
