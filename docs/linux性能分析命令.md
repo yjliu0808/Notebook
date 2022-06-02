@@ -183,6 +183,14 @@ us\usr、sy\sys
 
 ps aux |grep mysqld |grep -v grep 
 
+   
+
+
+
+
+
+
+
 
 
 + vmstat  
