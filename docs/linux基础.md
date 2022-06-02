@@ -9,6 +9,25 @@
 
 <div align="center"> <img src="pics/linux1.png" width="800"/> </div><br>
 
+```
+Linux
++ centos、ubuntu、suse、redhat、debain、deepin
++ debian家族： ubuntu
+  + 安装命令： apt  apt-get
+  + .deb 
++ fedora家族： centos
+  + yum  dnf
+  + .rpm包
++ 统一的安装命令
+  + tar.gz 安装包
+  + 安装时，依赖 gcc  但是 不一定会安装 可能需要手工安装
+  + make
+  
+
+```
+
+
+
 ### 第一讲、Linux系统简介
 
 
@@ -18,20 +37,101 @@
 - 开源软件:apache、nginx、mysql、php、samba、python
 - lamp:linux、apache、mysql、php(编程语言)
 
-<div align="center"> <img src="pics/linux3.png" width="800"/> </div><br>
-
 - www.netcraft.com 踩点技术、扫描
-
 - 为什么选择命令行：定位不同，一般不用图形界面
-
 - 解决问题的智慧：不是马上问别人，自学能力
-
 - 1.提示信息、帮助文档、示例、查找
 - 2.英文的困惑：Command not found、No Such file or directory
-
 - linux中主要英文单词的背诵、
-
 - 计划、坚持、专注、练习、
+
+
+
+linux服务器
+
++ 服务器  ：  在一些**硬件** + 操作系统 + 应用程序  ===输出 应用能力输出
+
++ linux： centos 7
+  + 无图像界面的服务器，一般才会作为 服务器
+  + 通过客户端  xshell、putty、cmd、finalshell
+    + 客户端工具要能连接到linux机器上，机器必须开发ssh服务，这个服务端口22
+    + centos系统默认是安装了ssh服务，开放了22端口
+    + ubuntu系统 默认没有安装ssh服务，所以，ubuntu这种图像界面系统，有时候不能通过客户端来连接。
+    + 你想要连接到一台服务器上：
+      + 1、服务器必须启动ssh服务，
+      + 2、服务器要开放ssh服务的端口
+      + 3、你本地与服务器之间网络要能通
+        + 检查： telnet server_ip 22
+
+ + linux 的根路径
+
+   + /boot   核相关文件
+   + **/bin**  存放系统中**可用的命令**
+   + **/etc**  系统管理所需要的**所有配置文件**
+   + **/usr** unix shared resource 用户共享程序文件夹
+   + /opt  optional 给主机额外安装的软件目录  相当于window d盘
+   + /home  它用户目录，它下一级文件夹，默认是被系统当作用户名的根路径
+     	+ 在企业中，你们操作服务器，一般会给你们非root权限的账号，那这个账号，肯定会在/home目录下面有一个文件夹，文件夹的名称是你的用户名，你的所有操作权限，都受这个用户的权限控制，所以你默认的操作都是在这个路径下
+   + /sys 系统配置文件，内核等相关
+   + **/proc**  process进程，虚拟文件系统，存储当前内核运行状态的特殊文件
+     	+ cpuinfo： 记录着系统在启动时，读取的cpu相关信息
+     	+ meminfo:  记录着系统在启动时，读取的memory相关信息
+     	+ 数字： 都是进程的id  pid  进入这个文件夹，可以查看这个进程启动时相关信息
+   + **/var**  不断扩充的东西，**如日志**
+     + /var/log/你的程序名称 日志文件
+
+   sda：我们用虚拟机方式产生的硬盘，都是sd盘，其实就是 机械硬盘
+
+   hd是固态，  他们的区别是，接口不一样
+
+   a\b\c.....  第几个硬盘
+
+   a1\a2\a3....  第1个硬盘的第几个分区
+
+   sda1：
+
++ ls -lth
+
+  + d 目录  l 链接  - 文件
+  + 每3个一组： r读  w写  x执
+
++ 安装： 
+
+  + fedora家族
+    + centos
+    + 可执行文件   rpm
+      + rmp -ivh *.rpm
+    + yum
+  + debain家族
+    + ubuntu
+    + 可执行文件  deb
+      + dpkg -i *.deb
+    + apt  apt-get
+
++ 获取命令的帮助：
+
+  + 第一种： command **--help**
+
+  + 第二种：man command   获取比上面更多的帮助
+
+  + 第三种： info commandlinux服务器
+
+    + 服务器  ：  在一些**硬件** + 操作系统 + 应用程序  ===输出 应用能力输出
+
+    + linux： centos 7
+      + 无图像界面的服务器，一般才会作为 服务器
+      + 通过客户端  xshell、putty、cmd、finalshell
+        + 客户端工具要能连接到linux机器上，机器必须开发ssh服务，这个服务端口22
+        + centos系统默认是安装了ssh服务，开放了22端口
+        + ubuntu系统 默认没有安装ssh服务，所以，ubuntu这种图像界面系统，有时候不能通过客户端来连接。
+        + 你想要连接到一台服务器上：
+          + 1、服务器必须启动ssh服务，
+          + 2、服务器要开放ssh服务的端口
+          + 3、你本地与服务器之间网络要能通
+            + 检查： telnet server_ip 22
+
+    
+
 
 ### 第二讲、linux系统安装
 
@@ -153,6 +253,8 @@ ls -l   详细信息的显示
 ls -d  查看目录属性
 
 ls -i  查看文件对应的id
+
+tree -l 树形目录
 
 ##### **4.1.2目录处理命令**
 
