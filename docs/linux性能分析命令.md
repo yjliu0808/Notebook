@@ -2,12 +2,6 @@
 
 ### linux性能分析命令
 
-
-
-
-
-
-
 #### 1.常用的top命令
 
 <div align="left"> <img src="pics/linux-top.png"/> </div><br>
