@@ -278,8 +278,29 @@ iostat：  看数据换入换出
 
    
 
-  
+
+#### 12.stress-ng
+
+- stress-ng:  性能测试模拟工具，可以直接模拟服务器各种压力情况
 
 
++ stress-ng   我可以通过它，来模拟，你们企业中的响应有cpu相关性能问题
 
+```
+# 安装epel源，更新系统
+yum install -y epel-release.noarch && yum -y update
+
+# 安装stess-ng 的工具
+yum install -y stress-ng
+```
+
+```
+(( proc_cnt = `nproc`*10 )); stress-ng --cpu $proc_cnt --pthread 1 --timeout 150  
+# (( proc_cnt = `nproc`*10 ));   把cpu核的数量乘以10倍，给变量proc_cnt
+# --cpu $proc_cnt  $proc_cnt shell编程中的变量引用
+# --pthread  每个进程有多少个线程
+# --timeout   超时时间，在命令执行多长时间之后自动结束
+```
+
+<div align="left"> <img src="pics/Linux-性能15.png"/> </div><br>
 
