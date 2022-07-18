@@ -295,6 +295,7 @@ yum install -y stress-ng
 ```
 
 ```
+进程上下文切换
 (( proc_cnt = `nproc`*10 )); stress-ng --cpu $proc_cnt --pthread 1 --timeout 150  
 # (( proc_cnt = `nproc`*10 ));   把cpu核的数量乘以10倍，给变量proc_cnt
 # --cpu $proc_cnt  $proc_cnt shell编程中的变量引用
@@ -304,3 +305,6 @@ yum install -y stress-ng
 
 <div align="left"> <img src="pics/Linux-性能15.png"/> </div><br>
 
+```
+stress-ng  -i 6 --hdd 1 --timeout 150
+```
