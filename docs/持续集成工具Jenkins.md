@@ -28,7 +28,7 @@
   启动Tomcat（在tomcat的bin目录中找到startup.bat执行启动）
   验证：
   http://localhost:8080验证Tomcat
-  http://localhost:8080/jenkins验证Jenkins
+  http://localhost:8080/jenkins验证Jenkins (若404即版本不对应，jenkins或者JDK)
 
 #### 3.重新安装jenkins
 
