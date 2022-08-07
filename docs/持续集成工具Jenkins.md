@@ -253,3 +253,37 @@ jmeter.save.saveservice.output_format=xml
 
 <div align="left"> <img src="pics/jenkins-build5.png" /> </div><br>
 
+#### 8.Jenkins 持续集成java+maven项目
+
+##### 1.jdk配置
+
+- System Configuration(系统管理) -> Global Tool Configuration（全局工具配置）
+
+  <div align="left"> <img src="pics/jenkins-setting1.png" /> </div><br>
+
+- 配置本地 jdk
+
+  <div align="left"> <img src="pics/jenkins-setting2.png" /> </div><br>
+
+##### 2.maven配置
+
+- 配置本地 maven
+
+  <div align="left"> <img src="pics/jenkins-setting3.png" /> </div><br>
+
+##### 3.新建maven项目
+
+1. 插件管理中下载 maven插件：maven intergration
+
+   <div align="left"> <img src="pics/jenkins-setting4.png" /> </div><br>
+
+2. 新建item-构建maven项目
+
+   <div align="left"> <img src="pics/jenkins-setting5.png" /> </div><br>
+
+   
+
+
+
+
+

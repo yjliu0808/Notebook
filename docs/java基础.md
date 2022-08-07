@@ -505,5 +505,5 @@ public class MyTest {
 String-----重写了equals ,一般引用数据类型都用这个方法比较是否一致
 
 
-	
-	
+​	
+​	
