@@ -45,15 +45,20 @@ step2：引入selenium框架/依赖
 第一个web自动化脚本
 
 ```java
-ChromeDriver driver = new ChromeDriver();
-driver.get("http://www.baidu.com");
+//1.设置Google浏览器的本地路径
+System.setProperty("webdriver.chrome.bin", "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe");
+//2.设置浏览器器驱动 (浏览器版本Google Chrome :Version 103.0.5060.134和驱动版本ChromeDriver: 103.0.5060.134)
+System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
+//3.打开浏览器实例化ChromeDriver对象即可
+ChromeDriver chromeDriver = new ChromeDriver();
+chromeDriver.get("http://www.baidu.com");
 ```
 
 Selenium WebDriver原理
 
 - 启动driver驱动，客户端根据json wire protocol协议可以通过不同语言向driver发起请求（比如Java、python等）。驱动解析请求，并在浏览器上执行相应的操作，并把执行结果返回给客户端。
 
-### 附录:环境问题整理
+### 附:WebDriver环境问题整理
 
 #### 1. chrome浏览器驱动路径
 
@@ -103,13 +108,19 @@ v2.29   v56-58
 
 Chrome V70以上按照版本对应即可
 
+Please see https://chromedriver.chromium.org/security-considerations 
+
 #### 3.chrome浏览器各版本下载 
 
 http://www.chromedownloads.net/chrome64win/
 
 4.ChromeDriver驱动镜像网址
 
- http://npm.taobao.org/mirrors/chromedriver
+http://chromedriver.storage.googleapis.com/index.html
+
+官网地址：
+
+https://chromedriver.chromium.org/security-considerations
 
 Firefox
 
@@ -282,21 +293,13 @@ capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL,
 "http://www.baidu.com");
 ```
 
-**总结** 
 
-1、Selenium介绍、Selenium家族
 
-2、Selenium IDE 录制/回放插件，用于chrome/firefox浏览器（了解）
+## 一、web自动化基础
 
-3、Selenium WebDriver环境搭建
+### 1.元素定位
 
-4、驱动版本匹配（Chrome、Firefox、IE），搭建三大浏览器环境
-
-5、打开浏览器统一封装
-
-### 元素定位
-
-#### 基础元素定位
+#### 6种基础元素定位
 
 **By.id**
 
@@ -322,6 +325,39 @@ capabilities.setCapability(InternetExplorerDriver.INITIAL_BROWSER_URL,
 
 根据超链接的部分文本值来获取元素
 
+```java
+//第1部分：基础元素定位
+//打开浏览器
+        WebDriver webDriver =CommonUtils.openBrowser("chrome");
+        webDriver.get("https://cn.bing.com/");
+        // <input id="sb_form_q" class="sb_form_q" name="q"> 
+        //1.(By.id )根据id来获取元素，返回单个元素，id值一般是唯一的
+        WebElement webElement1 = webDriver.findElement(By.id("sb_form_q"));
+        webElement1.sendKeys("测试通过ID定位搜索输入框的元素");
+        //2.(By.name )根据元素的name属性来获取元素，可能会返回元素集合
+        WebElement webElement2 = webDriver.findElement(By.name("q"));
+        webElement2.sendKeys("---追加测试内容");
+        //3.(By.tagName)根据元素的标签名来获取元素，可能会返回元素集合
+        //findElement 默认获取第一个input的值
+        WebElement webElement3 = webDriver.findElement(By.tagName("input"));
+        webElement3.sendKeys("---追加3");
+        //findElements,获取元素集合
+        List<WebElement> webElementList1 = webDriver.findElements(By.tagName("input"));
+        System.out.println("获取input元素个数:"+webElementList1.size());
+        //4.(By.className) 根据元素的样式class值来获取元素，可能返回元素集合
+        //className 不支持复核类名，有空格的不支持 。sb_form hassbi hasmic
+        List<WebElement> webElementList2 =webDriver.findElements(By.className("sb_form hassbi hasmic"));//不支持找到复合类名
+        List<WebElement> webElementList3 =webDriver.findElements(By.className("sb_form"));
+        System.out.println("获取类名sb_form的个数:"+webElementList3.size());
+        //5.(By.linkText) 根据超链接的完整文本值来获取元素
+        webDriver.findElement(By.linkText("图片")).click();
+        //6.(By.partialLinkText) 根据超链接的部分文本值来获取元素
+        webDriver.findElement(By.partialLinkText("图")).click();
+
+```
+
+
+
 #### cssSelector元素定位
 
 **根据tagName**
@@ -337,7 +373,7 @@ By.cssSelector("input#id"); //使用html标签拼上#id
 By.cssSelector("#id"); //仅使用#id
 ```
 
-根据className(样式名)，.class形式
+根据className(样式名 )，.class形式
 
 ```java
 By.cssSelector(".className");
@@ -369,6 +405,31 @@ By.cssSelector("标签名[属性1='属性值'][属性2='属性值']");
 By.cssSelector("input[value='255'][autocomplete='off']");
 By.cssSelector("input[autocomplete='off']");
 ```
+
+```java
+//第2部分：cssSelector 样式选择器元素定位
+        //findElements 返回集合   findElement返回单个元素可直接sendKeys()
+        //7.根据tagName
+        List<WebElement> webElementList4 = webDriver.findElements(By.cssSelector("input"));
+        System.out.println("样式选择器元素定位方式，获取input元素个数:" + webElementList4.size());
+        //8.根据ID 单个id
+        webDriver.findElement(By.cssSelector("#sb_form_q")).sendKeys("-- 测试");
+        //8.根据ID 使用html标签tagName拼上#id
+        //<div id="est_cn" class="est_common est_selected">国内版</div>
+        webDriver.findElement(By.cssSelector("div#est_en")).click();
+        webDriver.findElement(By.cssSelector("input#sb_form_q")).sendKeys("百度");
+        //9.根据className(样式名 )，.class形式  支持复合和单个类名
+        //<label for="sb_form_go" class="search icon tooltip" id="search_icon" aria-label="搜索网页">
+        webDriver.findElement(By.cssSelector(".search")).click();
+        //10.单属性选择 -支持元素的全部属性（不能支持文本）
+        webDriver.get("https://www.baidu.com/");
+        webDriver.findElement(By.cssSelector("input[maxlength='255']")).sendKeys("测试同学");
+        //10.多属性选择 --同时支持多个属性定位
+        webDriver.findElement(By.cssSelector("input[name='wd'][maxlength='255'][autocomplete='off']")).sendKeys("===追加内容");
+
+```
+
+
 
 #### xpath元素定位
 
@@ -436,11 +497,30 @@ By.cssSelector("input[autocomplete='off']");
 //*[contains(text(),'免费')] 获取免费注册超链接
 ```
 
+```java
+//第三部分：
+        //打开浏览器
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("https://baidu.com/");
+        //1.xpath定位
+        //xpath绝对定位
+        //   <a href="http://news.baidu.com" target="_blank" class="mnav c-font-normal c-color-t">新闻</a>
+        //webDriver.findElement(By.xpath("html/body/div[1]/div[1]/div[3]/a")).click();
+        //2.xpath相对定位 -通过元素名定位  属性选择@后面跟着的是属性名
+        //System.out.println("xpath相对定位 -通过元素名定位:"+webDriver.findElements(By.xpath("//input")).size());
+        //xpath相对定位 使用元素名+属性
+        //webDriver.findElement(By.xpath("//*[@name='wd']")).sendKeys("属性选择定位元素");
+        //使用元素(html元素-->标签)名+包含部分属性值
+        //webDriver.findElement(By.xpath("//*[contains(@name,'wd')]")).sendKeys("=====追加使用元素名+包含部分属性值 ");
+        //xpath相对定位: 文本选择  text()文本函数  文本精确匹配用的
+       /* webDriver.findElement(By.xpath("//*[@id=\"su\"]")).click();
+        webDriver.get("https://baidu.com/");*/
+        webDriver.findElement(By.xpath("//*[text()='新闻']")).click();
+```
+
 #### xpath轴定位
 
 - 当某个元素的各个属性及其组合都不足以定位时，那么可以利用其兄弟节点或者父节点等各种可以定位的元素进行定位。
-
-
 
 轴名称 及释义
 
@@ -465,17 +545,16 @@ By.cssSelector("input[autocomplete='off']");
 - cssSelector 样式定位器，可以支持id、tagName、className基本定位，还可以支持单属性/多属性定位
 - xpath绝对定位-绝对不推荐，难以维护
 - xpath相对定位，支持属性选择、文本选择 同时支持属性和文本混合选择（and拼接）
-- xpath模糊匹配： contains()函数 ，两个参数，第一个参数可以为属性选择也可以为文本选择，第二
-- 个参数就是为对应的属性值/文本值
+- xpath模糊匹配： contains()函数 ，两个参数，第一个参数可以为属性选择也可以为文本选择，第二个参数就是为对应的属性值/文本值
 - 轴定位：根据相邻的元素来辅助定位 三个常用的轴名称：parent（找爸爸）、preceding-sibling（找哥哥）、following-sibling（找弟弟）
 
 
 
-web自动化框架知识整理
+#### 如何定位不可见元素
 
-1.如何定位不可见元素
+<video id="video" controls="" preload="none"> <source id="mp4" src="vodeos/test.wmv" type="video/mp4"> </video>
 
-<div align="center"><img src="pics/定位元素.png" width="1000"/> </div><br>
+
 
 ### 元素WebElement常见API
 
@@ -690,7 +769,7 @@ elementToBeClickable 页面元素是否在页面上可用和可被单击
 得到alert框
 
 ```
-Alert alert = driver.switchTo.alert();
+Alert alert = driver.switchTo().alert();
 ```
 
 常用api:
