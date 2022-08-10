@@ -556,25 +556,25 @@ By.cssSelector("input[autocomplete='off']");
 
 
 
-### 元素WebElement常见API
+### 2.元素WebElement常见API
 
-**click()**
+#### **click()**
 
 触发当前元素的点击事件
 
-**clear()**
+#### **clear()**
 
 清空内容
 
-**sendKeys(...)** 
+#### **sendKeys(...)** 
 
-1. 往文本框一类元素中写入内容
+往文本框一类元素中写入内容
 
 ```java
 element.sendKeys("测试");//输入内容”测试”
 ```
 
-2. 按键操作
+#### element按键操作
 
 ```java
 element.sendKeys(Keys.CONTROL,"a");//ctrl+a 全选
@@ -586,25 +586,73 @@ element.sendKeys(Keys.BACK_SPACE);//删除
 element.sendKeys(Keys.SPACE);//空格键
 ```
 
-**getTagName()**
+#### **getTagName()**
 
 获取元素的的标签名
 
-**getAttribute(****属性名****)**
+#### **getAttribute(属性名)**
 
 根据属性名获取元素属性值
 
-**getText()**
+#### **getText()**
 
 获取当前元素的文本值
 
-**isDisplayed()**
+#### **isDisplayed()**
 
 查看元素是否显示
 
-**WebDriver****常用****API** 
+```java
+WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("http://www.baidu.com");
+        WebElement webElement = webDriver.findElement(By.id("kw"));
+        webElement.sendKeys("测试同学1");
+        //休眠延时等待
+        Thread.sleep(3000);
+        //clear 清楚文本输入框内容
+        webElement.clear();
+        //element.sendKeys按键操作
+        webElement.sendKeys("测试同学2");
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "a");//ctrl+a 全选
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "x");//ctrl+x 剪切
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "v");//ctrl+v 粘贴
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "a");//ctrl+a 全选
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.BACK_SPACE);//删除
+        Thread.sleep(2000);
+        webElement.sendKeys("测试同学3");
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "a");//ctrl+a 全选
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "c");//ctrl+c 复制
+        Thread.sleep(2000);
+        webElement.sendKeys(Keys.CONTROL, "v");//ctrl+v 粘贴
+        Thread.sleep(2000);
+        //webElement.sendKeys(Keys.ENTER);//回车
+        Thread.sleep(2000);
+        //getTagName  获取元素标签名
+        //getAttribute(属性名)  根据属性名获取元素属性值
+        System.out.println("getTagName获取元素标签名:" + webElement.getTagName());
+        System.out.println("getAttribute(属性名)根据属性名value获取元素属性值:" + webElement.getAttribute("value"));
+        //getText() 获取元素文本值
+        System.out.println("getText()获取元素文本值:" + webElement.getText());
+        //isDisplayed  判断元素是否显示 //可见输出true
+        System.out.println("判断元素是否显示:" + webElement.isDisplayed());
+        /*
+            (元素不可见会报错提示：element is not attached to the page document )
+            System.out.println("元素不可交互:"+webElement.isDisplayed());
+         **/
+```
 
-**get(String url)**
+
+
+### 3.**WebDriver常用API** 
+
+#### **get(String url)**
 
 访问指定url页面
 
@@ -612,7 +660,7 @@ element.sendKeys(Keys.SPACE);//空格键
 driver.get(String url);
 ```
 
-**getCurrentUrl()**
+#### **getCurrentUrl()**
 
 获取当前页面的url地址
 
@@ -620,7 +668,7 @@ driver.get(String url);
 driver.getCurrentUrl();
 ```
 
-**getTitle()**
+#### **getTitle()**
 
 获取当前页面的标题
 
@@ -628,7 +676,7 @@ driver.getCurrentUrl();
 driver.getTitle();
 ```
 
-**getPageSource()**
+#### **getPageSource()**
 
 获取当前页面源代码
 
@@ -636,7 +684,7 @@ driver.getTitle();
 driver.getPageSource();
 ```
 
-**quit()**
+#### **quit()**
 
 关闭驱动对象以及所有相关的窗口
 
@@ -644,7 +692,7 @@ driver.getPageSource();
 driver.quit();
 ```
 
-**close()**
+#### **close()**
 
 关闭当前窗口
 
@@ -652,49 +700,87 @@ driver.quit();
 driver.close();
 ```
 
-**navigate****对象** **--** **导航栏**
+```java
+ WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("http://www.baidu.com");
+        //1.getCurrentUrl()  获取当前页面的url
+        System.out.println("获取当前页面的url:" + webDriver.getCurrentUrl());
+        //2.getTitle() 获取当前页面的标题
+        System.out.println("获取当前页面的标题" + webDriver.getTitle());
+        //3.getPageSource() 获取当前页面源代码
+         System.out.println(webDriver.getPageSource());
+         //4.close() 关闭当前窗口
+        webDriver.findElement(By.partialLinkText("新闻")).click();
+        Thread.sleep(3000);
+        webDriver.close();
+        //4.quit() 关闭所有的窗口
+        Thread.sleep(3000);
+        webDriver.quit();
+```
+
+
+
+### 4.**navigate对象-- 导航栏**
 
 关于浏览器的基本功能操作，大部分都是由navigate对象提供的，如完成浏览器回退或者导航到指定url
 
 页面等操作
 
 ```java
-//获取navigate对象
-Navigation navigation = driver.navigate();
-//访问指定的url地址
-navigation.to(url);
-//刷新当前页面
-navigation.refresh();
-//浏览器回退操作
-navigation.back();
-//浏览器前进操作
-navigation.forward();
+       //导航使用（包括浏览器刷新、前进、后退）
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("http://www.baidu.com");
+        //获取navigate对象
+        WebDriver.Navigation navigation = webDriver.navigate();
+        //访问指定的url地址
+        Thread.sleep(2000);
+        navigation.to("https://cn.bing.com/");
+        Thread.sleep(2000);
+        //刷新当前页面
+        navigation.refresh();
+        Thread.sleep(2000);
+        //浏览器回退操作
+        navigation.back();
+        Thread.sleep(2000);
+        //浏览器前进操作
+        navigation.forward();
 ```
 
-#### **window**基本操作
+### **5.window**基本操作
 
 关于窗口的设置，基本都是由window对象提供的
 
 ```java
-//获取window对象
-Window window = driver.manage().window();
-//窗口最大化
-maximize();
-//浏览器全屏
-fullscreen();
-//窗口位置
-getPosition();
-//窗口大小
-getSize();
-//设置位置
-setPosition(targetPosition);
-//设置窗口大小
-setSize(targetSize)；
+ //windows相关操作
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("http://www.baidu.com");
+        //1.获取window对象
+        WebDriver.Window window = webDriver.manage().window();
+        //2.浏览器最大化 maximize 可避免很多问题（比如元素不可见）
+        Thread.sleep(2000);
+        window.maximize();
+        //3.浏览器全屏
+        Thread.sleep(2000);
+        window.fullscreen();
+        //4.获取到窗口位置  -以最左上角的点为原点，从左到右X轴，从上到下Y轴
+        System.out.println("从左到右X轴:"+window.getPosition().getX());
+        System.out.println("从上到下Y轴:"+window.getPosition().getY());
+        //5.获取到窗口的大小
+        System.out.println("窗口Width:"+window.getSize().getWidth());
+        System.out.println("窗口Height:"+window.getSize().getHeight());
+        //6.设置窗口的位置
+        Thread.sleep(2000);
+        Point point = new Point(100,100);
+        window.setPosition(point);
+        //7.设置窗口的大小
+        Thread.sleep(2000);
+        Dimension dimension = new Dimension(30,80);
+        window.setSize(dimension);
 ```
 
-#### 三大等待
+### 6.Element三大等待
 
-硬性等待
+#### 硬性等待
 
 ```
 Thread.sleep(long millis);
@@ -704,7 +790,7 @@ Thread.sleep(long millis);
 
 缺点：容易造成时间浪费
 
-##### **隐式等待**
+#### **隐式等待**
 
 在设置的超时时间范围内不断查找元素，直到找到元素或者超时
 
@@ -724,7 +810,7 @@ driver.manage.timeouts().implicitlyWait(long time, TimeUnit unit);
 
 不能适用条件更复杂的情况，如：元素可点击、元素可见
 
-##### **显式等待**
+#### **显式等待**
 
 显式等待通常是我们自定义的一段代码，用来等待某个条件发生后再继续执行后续代码（如找到元素、
 
@@ -745,8 +831,6 @@ WebElement element = wait.until(expectCondition);
 
 该方式不是全局设置，因此特定需要等待的元素可以这样处理，推荐优先使用这一种方法。
 
-##### **方法** 
-
 **等待条件**
 
 presenceOfElementLocated 页面元素在页面中存在
@@ -755,16 +839,43 @@ visibilityOfElementLocated 页面元素在页面存在并且可见
 
 elementToBeClickable 页面元素是否在页面上可用和可被单击
 
-总结
+```java
+WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("https://cn.bing.com");
+        WebElement webElement = webDriver.findElement(By.name("q"));
+        //1.硬性等待:Thread.sleep(long millis)
+        Thread.sleep(1000);
+        webElement.sendKeys("腾讯云");
+        webElement.sendKeys(Keys.ENTER);//回车
+        //2.设置全局隐式等待 //在设置的超时时间范围内不断查找元素，直到找到元素或者超时
+        //隐式等待生效：后面findElement找元素的话就会有隐式等待的效果
+        //隐式等待只会针对于元素存在的情况（在dom中存在），可见或者不可见均适用
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS); //找元素之前设置
+        WebElement webElement2 = webDriver.findElement(By.xpath("//*[@id=\"tile_link_cn\"]/strong[1]"));
+        webElement2.click();
+        //3.显示等待的方式
+        //3.1创建WebDriverWait对象   超时时间默认就是为秒
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver,10);
+        //3.2通过该对象所提供的方法 until  -->直到某个条件满足时为止
+        //内置条件1 : presenceOfElementLocated  --> 元素在当前dom中存在  跟隐式等待的效果差不多
+        //visibilityOfElementLocated  --> 元素可见的  肉眼可见 输入框/获取到元素信息
+        WebElement webElement3 =  webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"b_results\"]/li[2]/div[1]/h2/a")));
+        webElement3.click();
+        //内置条件2 :elementToBeClickable  -->元素可被点击 按钮/超链接
+        WebElement webElement4 = webDriverWait. until
+                (ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"b-scopeListItem-images\"]/a")));
+        webElement4.click();
+        //隐式等待 VS 显示等待
+        //1.作用域范围:隐式->全局生效   显示->针对某一个元素
+        // 2.条件范围:隐式->元素存在    显示->存在、可见、可被点击
+        //3.超时:    隐式->秒/分钟/天  显示->默认为秒
+```
 
-- WebElement元素API使用 click、sendKeys、clear、getText()....
-- WebDriver驱动API使用 get、getCurrentUrl、getTtile、quit、close、导航、窗口
-- 隐式等待 全局性设置 后续所有的fineElement方法都会有隐式等待的效果
-- 显示等待 针对某一个元素生效，条件丰富：等待元素可见、存在、可被点击
 
-### 三大切换
 
-#### **切换**Alert
+### 7.(弹框及内嵌页面及window)三大切换场景
+
+#### 1.**切换**Alert
 
 得到alert框
 
@@ -780,7 +891,28 @@ alert.accept(); //点击确认按钮
 alert.dismiss(); //取消
 ```
 
-**切换**Iframe
+```java
+ //1.Alert弹窗的处理
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("D:\\Repository\\Git_AthenaRep\\PrivateOthenrs\\Code\\web_auto_athena_vsion\\web_auto_athena_v1\\src\\main\\resources\\login.html");
+        webDriver.findElement(By.id("user")).sendKeys("athena");
+        webDriver.findElement(By.id("pwd")).sendKeys("123456");
+        webDriver.findElement(By.xpath("//*[@id=\"login\"]")).click();
+        //得到alert框
+        Alert alert = webDriver.switchTo().alert();
+        System.out.println("获取警告框中的提示信息:" + alert.getText()); //获取警告框中的提示信息
+        Thread.sleep(2000);
+        alert.accept(); //点击确认按钮
+        Thread.sleep(2000);
+        alert.accept(); //点击确认按钮
+        Thread.sleep(2000);
+        //alert.dismiss(); //取消
+
+```
+
+
+
+#### **2.切换**Iframe
 
 当想要定位iframe中的元素时，由于driver的焦点还停留在原页面，我们在iframe新的页面上定位元素
 
@@ -794,49 +926,87 @@ alert.dismiss(); //取消
 driver.switchTo().frame(index);
 ```
 
-\2. iframe的id
+2. iframe的id
 
 ```
 driver.switchTo().frame(nameOrId);
 ```
 
-\3. iframe WebElement
+3. iframe WebElement
 
 ```
 driver.switchTo().frame(WebElement);
 ```
 
-\4. 跳转到父级iframe中，如果是顶级iframe，不会有任何变化。
+4. 跳转到父级iframe中，如果是顶级iframe，不会有任何变化。
 
 ```
 driver.switchTo().parentFrame()
 ```
 
-\5. 回到默认内容页面(否则会找不到元素)
+5. 回到默认内容页面(否则会找不到元素)
 
 ```
 driver.switchTo().defaultContent()
 ```
 
-#### **切换**Window
+```
+  //2.iframe切换
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("https://cloud.tencent.com/voc/");
+        WebDriver.Window window = webDriver.manage().window();
+        window.maximize();//浏览器最大化
+        //点击首页登录按钮
+        WebElement webElement = webDriver.findElement(By.xpath("//*[@id=\"navigationBar\"]/div/div[2]/div[2]/a[1]"));
+        webElement.click();
+        Thread.sleep(3000);
+        //点击扫码登录页面 qq方式登录
+        WebElement webElement1= webDriver.findElement(By.xpath("//*[@id=\"loginBox\"]/div/div/div[4]/div[2]/div[2]/a/span"));
+        webElement1.click();
+        Thread.sleep(3000);
+        ////此元素在iframe中
+        //1.iframe切换:通过index索引来切换  索引从0开始
+        //webDriver.switchTo().frame(0);
+        //2.iframe切换: 根据id来切换  <iframe frameborder="0" width="407" height="331" id="ptlogin_iframe" name="ptlogin_iframe"></iframe>
+        WebElement element = webDriver.findElement(By.id("ptlogin_iframe")); //iframe的id属性得到元素
+        webDriver.switchTo().frame(element );
+        //点击qq登录页面的 账号密码方式登录
+        WebElement webElement2= webDriver.findElement(By.xpath("//*[@id=\"switcher_plogin\"]"));
+        webElement2.click();
+        Thread.sleep(3000);
+        //输入账号
+        WebElement webElement3= webDriver.findElement(By.xpath("//*[@id=\"u\"]"));
+        webElement3.clear();
+        webElement3.sendKeys("2761104162");
+        //输入密码
+        WebElement webElement4= webDriver.findElement(By.xpath("//*[@id=\"p\"]"));
+        webElement4.clear();
+        webElement4.sendKeys("112233lyj");
+        Thread.sleep(3000);
+        webDriver.findElement(By.xpath("//*[@id=\"login_button\"]")).click();
+        Thread.sleep(3000);
+        webDriver.findElement(By.xpath("//*[@id=\"newVcodeArea\"]/div[1]/div/div[1]/a")).click();
+        //3.iframe切换:一级一级回到上一层页面中
+        webDriver.switchTo().parentFrame();
+        //回退到首页
+        WebDriver.Navigation navigation = webDriver.navigate();
+        navigation.back();
+        //首页登录
+         webDriver.findElement(By.xpath("//*[@id=\"navigationBar\"]/div/div[2]/div[2]/a[1]")).click();
+```
 
-当我们点击了 a 
 
-标签元素时，会触发打开链接页面的事件，有两种情形：
 
-\1. 在当前窗口加载新页面内容
+#### **3.切换**Window窗口
 
-\2. 新建一个窗口加载新页面内容，这种情况在 a 
+当我们点击了 a 标签元素时，会触发打开链接页面的事件，有两种情形：
 
-标签有 target="_blank" 
+1. 在当前窗口加载新页面内容
 
-时触发
+2. 新建一个窗口加载新页面内容，这种情况： a 标签有 target="_blank" 时触发
+3. 当发生第2种情况时，同iframe类似，我们需要切换窗口
 
-当发生第2种情况时，同iframe类似，我们需要切换窗口
-
-切换方式：
-
-传入要操作窗口的handle句柄 -- 窗口的身份标识 、每一个窗口的句柄都不同，句柄是不会重复（）
+切换方式：传入要操作窗口的handle句柄 -- 窗口的身份标识 、每一个窗口的句柄都不同，句柄是不会重复（）
 
 ```
 driver.switchTo.window(nameOrHandle);
@@ -849,7 +1019,61 @@ driver.getWindowHandle();//获取当前操作窗口的句柄
 driver.getWindowHandles();//获取测试时打开的所有窗口句柄
 ```
 
-### Select下拉选择框
+```
+    //window窗口切换
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("http://www.baidu.com");
+        System.out.println("获取当前操作窗口的句柄1："+webDriver.getWindowHandle());
+        Thread.sleep(1000);
+        //点击了这个链接，查看窗口的句柄  //4个句柄结果值一样
+        webDriver.findElement(By.linkText("hao123")).click();
+        System.out.println("获取当前操作窗口的句柄2："+webDriver.getWindowHandle());
+        Thread.sleep(1000);
+        webDriver.findElement(By.linkText("新闻")).click();
+        System.out.println("获取当前操作窗口的句柄3："+webDriver.getWindowHandle());
+        Thread.sleep(1000);
+        webDriver.findElement(By.linkText("贴吧")).click();
+        System.out.println("获取当前操作窗口的句柄4："+webDriver.getWindowHandle());
+        Thread.sleep(2000);
+        //两个窗口的切换 (需要得到每个窗口的句柄)
+         String beforeHandle = webDriver.getWindowHandle();
+        System.out.println("第一个窗口的句柄："+beforeHandle);
+        //获取到所有的窗口句柄，把第一个给剔除掉，得到的就是第2个窗口的句柄 //set集合无序的不可重复的
+        Set<String> handles = webDriver.getWindowHandles();
+        String secondHandle = "";
+        for(String handle : handles){
+            if(handle.equals(beforeHandle)){
+                //若一样就继续循环，直到不一样跳出循环，赋值给第2个窗口的句柄
+               continue;
+            }
+             secondHandle = handle;
+        }
+        System.out.println("第二个窗口的句柄："+secondHandle);
+        //1.个窗口切换窗口
+        webDriver.switchTo().window(secondHandle);
+        webDriver.findElement(By.xpath("//a[text()='腾讯']")).click();
+        //2.多个窗口的切换（同时有两个新的窗口以上）
+        Set<String> handles2= webDriver.getWindowHandles();
+        for(String handle : handles2){
+            // --根据窗口的信息（title、url）找到对应窗口的句柄
+            if(webDriver.getCurrentUrl().equals("http://news.baidu.com/")){
+                //driver现在是在正确的窗口中-- 同样说明现在的handle也是正确，我们不需要再切换了
+            }else{
+                //切换handle句柄
+                webDriver.switchTo().window(handle);
+            }
+        }
+        webDriver.findElement(By.xpath("//*[@id=\"ww\"]")).sendKeys("就是切换到新闻的窗口");
+        //NoSuchElementException 可能的原因
+        //1、定位表达式写错了
+        //2、元素没有加载出来，等待
+        //3、元素在iframe中
+        //4、元素在新的窗口里面
+```
+
+
+
+### 8.Select下拉选择框
 
 如果页面元素是一个下拉框，我们可以将此web元素封装为Select对象。
 
@@ -866,7 +1090,26 @@ select.selectByValue(value);//选择指定value值对应的选项
 select.selectByVisibleText(text);//选中文本值对应的选项
 ```
 
-### 鼠标操作
+```
+ //select下拉框
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("D:\\Repository\\Git_AthenaRep\\PrivateOthenrs\\Code\\web_auto_athena_vsion\\web_auto_athena_v1\\src\\main\\resources\\web2.html");
+        WebDriver.Window window = webDriver.manage().window();
+        window.maximize();//浏览器最大化                //*[@id="tSelect"]/div/div[1]/div/input
+        WebElement webElement = webDriver.findElement(By.xpath("/html/body/select[1]"));
+        Select select = new Select(webElement);
+        Thread.sleep(2000);
+        //根据索引选择对应选项
+        select.selectByIndex(2);
+        //根据文本选择
+        WebElement webElement2 = webDriver.findElement(By.xpath("/html/body/select[2]"));
+        Select select2 = new Select(webElement2);
+        select2.selectByVisibleText("成都");
+```
+
+
+
+### 9.鼠标操作
 
 自动化测试时，有些元素不适合直接点击或者进行某些操作时，可以使用Selenium的Actions类来模拟
 
@@ -892,6 +1135,30 @@ Actions:
 actions.clickAndHold(onElement).moveToElement(toElement).release().build().perform();
 ```
 
+```
+ //9.鼠标操作
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("http://www.baidu.com");
+        //例一:
+        webDriver.manage().window().maximize();
+        Thread.sleep(2000);
+        //百度设置
+         WebElement webElement = webDriver.findElement(By.id("s-usersetting-top"));
+        Actions actions = new Actions(webDriver);
+        actions.moveToElement(webElement).build().perform();
+        Thread.sleep(2000);
+        //例子二
+        webDriver.get("http://www.treejs.cn/v3/demo/cn/exedit/drag.html");
+        Thread.sleep(2000);
+        //随意拖拽1-1 treeDemo_2_span
+        WebElement webElement1 = webDriver.findElement(By.id("treeDemo_2_span"));
+        Thread.sleep(2000);
+        //随意拖拽1-2 treeDemo_3_span
+        WebElement webElement2 = webDriver.findElement(By.id("treeDemo_3_span"));
+        Actions actions2 = new Actions(webDriver);
+        actions2.clickAndHold(webElement1).moveToElement(webElement2).release().build().perform();
+```
+
 **总结** 
 
 - alert弹窗切换 通过Alert类来处理
@@ -900,7 +1167,7 @@ actions.clickAndHold(onElement).moveToElement(toElement).release().build().perfo
 - select下拉框，通过Select类处理
 - 鼠标操作，鼠标持续左击、右击、移动到指定元素上...，鼠标动作生效一定要记得调用build().perform()
 
-### 时间控件
+### 10.时间控件
 
 控件没有限制手动输入，则直接调用sendKeys方法写入时间数据
 
@@ -912,7 +1179,7 @@ https://www.layui.com/demo/form.html
 
 12306时间选择框
 
-**JavaScript****调用**
+### **11.JavaScript调用**
 
 某些特殊情况下，使用selenium的api无法操作页面元素，可以考虑通过执行js来完成。
 
@@ -945,7 +1212,7 @@ element.scrollIntoViewIfNeeded(true) 滚动到指定元素的位置
 
 LazyLoad懒加载：https://www.wandoujia.com/top/app
 
-### 文件上传
+### 12.文件上传
 
 文件上传是自动化中比较麻烦棘手的部分。
 
@@ -959,18 +1226,45 @@ LazyLoad懒加载：https://www.wandoujia.com/top/app
 
 解决办法：使用sendKeys写入文件的路径
 
+```
+ @Test
+    public void FileCase() throws InterruptedException {
+        //文件上传
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        webDriver.get("D:\\Repository\\Git_AthenaRep\\PrivateOthenrs\\Code\\web_auto_athena_vsion\\web_auto_athena_v1\\src\\main\\resources\\web2.html");
+        //1.元素为input标签，并且type为file文件上传
+        Thread.sleep(2000);
+        webDriver.findElement(By.xpath("/html/body/input[5]")).sendKeys("D:\\Repository\\Git_AthenaRep\\PrivateOthenrs\\Code\\web_auto_athena_vsion\\web_auto_athena_v1\\src\\main\\resources\\a.jpeg");
+    }
+     @Test
+    public void FileCase2() throws InterruptedException {
+        //文件上传
+        WebDriver webDriver = CommonUtils.openBrowser("chrome");
+        //2.元素不为input标签
+        webDriver.get("");
+        webDriver.findElement(By.id("test1")).sendKeys("D:\\Repository\\Git_AthenaRep\\PrivateOthenrs\\Code\\web_auto_athena_vsion\\web_auto_athena_v1\\src\\main\\resources\\a.jpeg");
+        //上传的windows窗口--点击上传按钮
+        webDriver.findElement(By.id("test1")).click();
+        //执行autoit转换之后的exe文件
+        //1、生成runtime对象  -》Java运行时对象，有提供了执行exe文件API
+        Runtime runtime = Runtime.getRuntime();
+        //2、runtime的exec方法
+        try {
+            runtime.exec("src/test/resources/autoittest.exe");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+```
+
 **总结** 
 
 1、时间控件，如果手动输入时间，可以在代码里面直接调用sendKeys
 
 2、时间控件，限制了输入，通过执行JavaScript修改属性/移除属性 （readonly）-12306
 
-3、JavascriptExecutor执行JavaScript 不传参/传参 ，Java代码可以传参给JavaScript，提高JavaScript使
+3、JavascriptExecutor执行JavaScript 不传参/传参 ，Java代码可以传参给JavaScript，提高JavaScript使用范围
 
-用范围
-
-4、文件上传，（1）input标签，type为file类型 直接通过sendKey写入数据 （2）不是input标签，通
-
-过第三方的工具AutoIT
+4、文件上传，（1）input标签，type为file类型 直接通过sendKey写入数据 （2）不是input标签，通过第三方的工具AutoIT
 
 5、验证码，推荐用万能验证码
