@@ -11,7 +11,6 @@
 
 ### :coffee: 自动化测试
 
-- [**自动化测试-Java-Demo**](https://github.com/yjliu0808/Notebook/blob/master/docs/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95-Java-Demo.md)
 - [HTML基础](https://github.com/yjliu0808/Notebook/blob/master/docs/HTML%E5%9F%BA%E7%A1%80.md)
 - [JAVA基础](https://github.com/yjliu0808/Notebook/blob/master/docs/java%E5%9F%BA%E7%A1%80.md)
 - [Python](https://github.com/yjliu0808/Notebook/blob/master/docs/python%E5%9F%BA%E7%A1%80.md)
