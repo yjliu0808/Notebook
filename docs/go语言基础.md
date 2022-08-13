@@ -12,9 +12,6 @@ go run hello.go
 ```
 
 Go 官方编码指南：https://golang.org/#
-![image-20211003125342993](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211003125342993.png)
-
-![image-20211003125529066](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211003125529066.png)
 
 GoLang 中文标准文档：https://studygolang.com/pkgdoc
 

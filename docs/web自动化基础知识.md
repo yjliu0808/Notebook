@@ -248,7 +248,7 @@ capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORIN
 URITY_DOMAINS, true);
 ```
 
-**3. IE****浏览器缩放设置**
+3. **IE浏览器缩放设置**
 
 使用IE浏览器去完成自动化测试时，代码报了如下错误：
 
@@ -269,7 +269,7 @@ DesiredCapabilities capabilities = new DesiredCapabilities();
 capabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
 ```
 
-**4. IE****浏览器****window****丢失问题**
+**4. IE浏览器window丢失问题**
 
 使用IE浏览器去完成自动化测试时，代码报了如下错误：
 
