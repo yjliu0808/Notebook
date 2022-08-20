@@ -505,5 +505,37 @@ public class MyTest {
 String-----重写了equals ,一般引用数据类型都用这个方法比较是否一致
 
 
-​	
-​	
+​	练习：
+
+```
+@Test
+    public void test1Demo() {
+        //未知字符串 str
+        String   str = "AAthenaA";
+        //定义map集合存放字符及次数
+        HashMap<String,Integer> map = new HashMap<String,Integer>();
+        //根据字符串长度循环
+        for(int i =0;i<str.length();i++){
+             //把字符存入map (key为每个字符,value为次数)
+             //首次哦判断字符不在map中，则添加到map中，首次计数1
+             if(!map.containsKey(str.charAt(i)+"")){
+                 map.put(str.charAt(i)+"", 1);
+               }else{
+                   //如果该字符已经在map存在，计数value值加1
+                 map.put(str.charAt(i)+"", map.get(str.charAt(i)+"")+1) ;
+               }
+         }
+        //定义：字符串中最多的字符变量 keystr ，出现最多次数变量maxnum
+        int maxnum=0; String keystr =null;
+        for(String sr :map.keySet()){
+            if(map.get(sr)>=maxnum){
+                maxnum=map.get(sr);
+                keystr=sr;
+            }
+        }
+        System.out.println("字符串中最多的字符为:"+keystr+"出现次数:" +maxnum);
+        System.out.println("map:"+map);
+    }
+```
+
+
