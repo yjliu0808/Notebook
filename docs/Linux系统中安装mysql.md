@@ -64,3 +64,5 @@ select host, user from user;
 grant all privileges on *.* to root@'%' identified by 'rootroot' with grant option;
 ```
 
+window 安装mysql
+

@@ -91,6 +91,10 @@
         arr2[2] = 300;
         arr2[3] = 400;
         arr2[4] = 500;
+ int[] arr1 = {1,2,3,4,5};
+        for(int i =0;i<arr1.length;i++){
+            System.out.println(arr1[i]);
+        }
 ```
 
 - 创建二位数组
@@ -103,6 +107,46 @@
         str2[1][0] = "css";
         str2[1][1] = "javascript";
 ```
+```
+  /*
+     * @ Author:Athena
+     * @ Date 2022/8/31 20:38
+     * @ Description //数组排序
+     * @ Param
+     * @ return
+     **/
+    @Test
+    public void test8(){
+        int[] arr ={13,2,1,67,89,434,4,0,6};
+       // System.out.println(arr.length);
+        for(int i = 0;i<arr.length;i++){
+           for(int j = 0;j<arr.length-1;j++){
+               //小到大排序
+               if(arr[j]>arr[j+1]){
+                   int x =arr[j];
+                  arr[j] = arr[j+1];
+                  arr[j+1] = x;
+               }
+
+           }
+
+        }
+        for(int i = 0;i<arr.length;i++){
+            System.out.println(arr[i]);
+        }
+    }
+@Test
+    public void test9(){
+        int[] arr = {3,6,52,22,0};
+        Arrays.sort(arr);
+        for(int i = 0;i<arr.length;i++){
+            System.out.println(arr[i]);
+        }
+}
+```
+
+
+
 #### 5.包装类型
 
 基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。
@@ -537,5 +581,4 @@ String-----重写了equals ,一般引用数据类型都用这个方法比较是�
         System.out.println("map:"+map);
     }
 ```
-
 
