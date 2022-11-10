@@ -4,11 +4,6 @@
 
 ## python入门基础-学习笔记
 
-[TOC]
-
-[参考文档]: https://www.runoob.com/python/python-variable-types.html
-[推荐文档]: https://blog.csdn.net/hhhhhhhhhhwwwwwwwwww/article/details/120037975
-
 ### pycharm的一些常用设置
 
 - 进入setting>Editor>File and Code Templates，点击python script，进行设置：
@@ -103,17 +98,44 @@
   T=true     #布尔值
   A = B = C = 100  #多个变量赋值
   # 两个整型对象 1 和 2 分别分配给变量 a 和 b，字符串对象 "john" 分配给变量 c
-  a1, b1, c1 = 1, 2, "john"
+  a =1
   print(type(a))
+  aa=1.3
+  print(type(aa))
+  b= '1'
   print(type(b))
-  print(type(c))
+  d=True
   print(type(d))
-  ---------------------------------
+  l = ['Athena','test',100,10.2]
+  print(type(l))
+  tup = ('python','java',13,14)
+  print(type(tup))
+  dic = {'name':'Athena','age':13,'性别':'f'}
+  print(type(dic))
+  ----------------------------
   <class 'int'>
   <class 'float'>
   <class 'str'>
-  <class 'str'>
+  <class 'bool'>
+  <class 'list'>
+  <class 'tuple'>
+  <class 'dict'>
+  
   ```
+
+```
+name =input('姓名:')
+age =input("年龄:")
+print('my name is %s,my age is %d'%(name,int(age)))
+这就用到了占位符，如：%s、%d
+'''
+# name = input('输入名字')
+# # 一个值的话直接放到%后面
+# print('my name is %s'%name)
+# %s 占位符 可以接受所有的数据类型 %d只能接受数字 有局限性
+# 多个值的话直接放到%后面要有括号
+print('My name is %s，my age is %d'%('dahai',18))
+```
 
 **五个标准的数据类型**
 
@@ -127,7 +149,6 @@
 
 - Dictionary（字典）
 
-  (备注：此处暂时还不理解)
 
 ### Python中的运算符
 
@@ -310,6 +331,21 @@
   print(str4)
   str5= "我的名字：{a}，年龄：{b}，性别：{c}。".format(a = "Athena",c = "nv",b = "18")
   print(str5)
+  #format
+  print('my name is {0}'.format(1))
+  print('my name is {0},my age is {1}'.format('athena',20))
+  print('my name is {name},my age is {age}'.format(name='athena',age=18))
+  s1='ab'
+  s2='bc'
+  s3='ef'
+  print(''.join([s1,s2,s3]))
+  print(''+s1+s2+s3)
+  #split分割
+  s='root:123'
+  print(s.split(':'))
+  print(s.split(':')[0])
+  print(s.split(':')[1])
+  print(s[0:8])
   ```
 
 - 5、字符串的转义
@@ -603,9 +639,26 @@
   print(dic1)  # --{'b': 22, 'c': '33'}
   ```
 
+### 总结数据类型
+
+```java
+# 1个值的数据类型：字符串、数字、布尔
+# 多个值的数据类型：列表、字典、元组、集合
+#列表通过下标索引取值，有序
+l=['name',1]
+dic={'name':1}
+#元组无法修改
+tup=('name',1)
+s={'name',1}
+print(type(l))
+print(type(dic))
+print(type(tup))
+print(type(s))
+```
+
 ### Python 日期和时间
 
-- Python 程序能用很多方式处理日期和时间，转换日期格式是一个常见的功能。
+-   Python 程序能用很多方式处理日期和时间，转换日期格式是一个常见的功能。
 
 - Python 提供了一个 time 和 calendar 模块可以用于格式化日期和时间。
 
