@@ -229,3 +229,9 @@ $ git cherry-pick feature
 ```
 
 上面代码表示将`feature`分支的最近一次提交，转移到当前分支。
+
+问题记录：
+1、缓存流不够，报错524288000
+
+<div align="left"> <img src="pics/gitpro.png" /> </div><br>
+
