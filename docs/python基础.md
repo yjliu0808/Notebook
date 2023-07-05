@@ -4,6 +4,20 @@
 
 ## python入门基础-学习笔记
 
+### Python 优缺点
+
+Python的优点很多，简单为大家列出几点。
+
+1. 简单明确，跟其他很多语言相比，Python更容易上手。
+2. 能用更少的代码做更多的事情，提升开发效率。
+3. 开放源代码，拥有强大的社区和生态圈。
+4. 能够做的事情非常多，有极强的适应性。
+5. 能够在Windows、macOS、Linux等各种系统上运行。
+
+Python最主要的缺点是执行效率低，但是当我们更看重产品的开发效率而不是执行效率的时候，Python就是很好的选择。
+
+
+
 ### pycharm的一些常用设置
 
 - 进入setting>Editor>File and Code Templates，点击python script，进行设置：
