@@ -43,6 +43,11 @@ update user set host='%' where user='root';
 flush privileges;
 ALTER USER 'root'@'%' IDENTIFIED BY '123456';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+//修改密码为复杂一点的密码，云服务器防止病毒
+ALTER USER 'root'@'%' IDENTIFIED BY '123456';
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+
+
 ```
 
 
@@ -154,13 +159,21 @@ yum install glibc-langpack-zh.x86_64
 ```
 vim /etc/profile
 
-export JAVA_HOME=/athena/jdk/jdk1.8.0_202
+export JAVA_HOME=/athena/jdk/jdk1.8.0_371
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PATH:$JAVA_HOME/bin
 
 source /etc/profile
 java -version
 ```
+
+```
+export MAVEN_HOME=/athena/maven/apache-maven-3.9.6
+export PATH=$PATH:$MAVEN_HOME/bin
+
+```
+
+
 
 ### 安装redis操作步骤
 
@@ -320,10 +333,40 @@ JENKINS_PORT="8082"   #8080换成8082
 vim /lib/systemd/system/jenkins.service
 
 # 修改端口号
-Environment="JENKINS_PORT=9898"
+Environment="JENKINS_PORT=8082"
 
 systemctl daemon-reload
 sudo systemctl restart jenkins
+```
+
+```
+jenkins安装后的相关目录
+rpm -ql jenkins
+
+
+配置jdk的路径
+我的jdk 是 rpm安装的
+
+which java
+#结果为  /usr/bin/java 
+#在 candidates 后追加jdk 安装路径 一直到jdk安装路径下的bin/java
+vi /etc/init.d/jenkins
+#如果存在 就不需要添加了 如果修改了 需要执行下面命令才能生效
+systemctl daemon-reload
+访问安装：http://101.35.51.221:8082/
+```
+
+### 配置jenkins
+
+报错：HTTP ERROR 403 No valid crumb was included in the request
+
+<div align="left"> <img src="pics/jenkins_yun1.png" /> </div><br>
+
+### 服务器安装git
+
+```
+yum -y install git
+ git --version
 ```
 
 
@@ -353,10 +396,5 @@ create user zabbix@localhost identified by 'gP%?qfZS>3/W';
 
 
 
-安装git
 
-```
-yum -y install git
- git --version
-```
 

@@ -1361,3 +1361,7 @@ Python从设计之初就已经是一门面向对象的语言，正因为如此�
 ## 二、重新学习python 笔记
 
 cmd 可直接运行python文件: python+空格 +py文件的名称
+
+
+核心编程语雀链接：https://www.yuque.com/tuling_python/new_basic
+访问密码：ffqv

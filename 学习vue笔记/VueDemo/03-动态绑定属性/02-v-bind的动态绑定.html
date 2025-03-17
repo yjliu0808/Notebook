@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active {
+            color: red; /* 定义 active 类的样式 */
+        }
+        .line {
+            text-decoration: underline; /* 定义 line 类的样式 */
+        }
+    </style>
+</head>
+<body>
+    <div id = "app">
+        <h1 v-bind:class="{active:isActive,line:isLine}">{{message}}</h1>
+        <  v-on:click="btnclick">点击会变颜色</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                message:'你好啊',
+                isActive:true,
+                isLine:true
+            },
+            methods:{
+            btnclick: function(){
+                this.isActive = !this.isActive
+            }
+            }
+           
+            
+        })
+    </script>
+</body>
+</html>

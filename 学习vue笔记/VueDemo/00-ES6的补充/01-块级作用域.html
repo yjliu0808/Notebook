@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <script>
+        //1、变量的作用域，变量在什么范围可以用
+        {
+            var name = 'athena'
+            console.log(name)
+        }
+        //2、没有块级作用域会有问题,if的这种没有限制
+        var nam1 = 'athan1'
+        if(true){
+            func = function(){
+                console.log(name1)
+            }
+            console.log(name)
+        }
+        console.log(name)
+      
+        var btns = document.getElementsByTagName('button');
+        for(var i = 0;i<btns.length;i++){
+            btns[i].addEventListener('click',function(){
+               console.log('第'+ i + '个按钮')
+             })
+         }
+
+        var btns = document.getElementsByTagName('button');
+for (let i = 1; i <= btns.length; i++) {  // 使用 let 代替 var
+    btns[i-1].addEventListener('click', function() {
+        console.log('第' + i + '个按钮');
+    });
+}
+
+    </script>
+</body>
+</html>

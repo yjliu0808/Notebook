@@ -1,0 +1,27 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ </head>
+ <body>
+    <div id = "app">
+        <ul>
+            <li v-for = "item in movies">{{item}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue(
+            {
+                el:'#app',
+                data:{
+                    message:'列表展示以下数据：',
+                    movies:['志愿军','流浪地球','因果报应','王牌对王牌','流水迢迢']
+                }
+            }
+        )
+    </script>
+ </body>
+ </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "app">
+        <h1>{{message}}</h1>
+        <a v-bind:href="imgurl">点击查看图片</a>
+
+       <img v-bind:src="imgurl" alt="">
+      
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data:{
+                message:'你好啊',
+                imgurl: 'https://img.zcool.cn/community/01be0755751704000000438393a4c1.jpg%403000w_1l_2o_100sh.jpg'
+            }
+        })
+    </script>
+</body>
+</html>
