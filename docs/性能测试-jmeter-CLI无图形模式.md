@@ -25,3 +25,27 @@
 命令执行的端口：4445 ~ 4455  10个端口 自动寻找这个端口区间
 
  html报告中取点时间间隔默认是1分钟 6w毫秒，如果觉得太长，可以修改 reportgreerator.properties中jmeter.reportgenerator.overall_granularity=60000
+
+## 通过命令行运行 `.jmx` 脚本（推荐用于生成报告）
+
+> 命令行执行更轻量、适合定时执行、支持自动生成报告。
+
+### 命令格式：
+
+```
+bash
+
+
+复制编辑
+jmeter -n -t your_test.jmx -l result.jtl -e -o report/
+```
+
+### 参数说明：
+
+| 参数 | 含义                     |
+| ---- | ------------------------ |
+| `-n` | 非 GUI 模式运行          |
+| `-t` | 测试计划文件路径（.jmx） |
+| `-l` | 结果文件输出路径（.jtl） |
+| `-e` | 开启 HTML 报告生成功能   |
+| `-o` | HTML 报告输出目录        |

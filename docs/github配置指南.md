@@ -3,8 +3,8 @@
 - 设置或者修改用户名及邮箱
 
   ```
-  git config --global user.name "***"
-  git config –-global user.email "*****"
+  git config --global user.name "yjliu0808"
+  git config –-global user.email "yjliu0808@163.com"
   ```
 
 - 查看配置信息

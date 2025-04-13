@@ -307,6 +307,8 @@ Testng测试框架支持定义测试套件，达到管理我们测试用例代�
 
 #### 其他封装方法Demo
 
+### 7、管理员登录接口用例
+
 ```java
 package com.cn.cases;
 
@@ -376,34 +378,10 @@ public class AdminLogin {
 
 ```
 
-
+### 8、读取excel中的数据封装到实体类
 
 ```java
-package com.cn.utils;
-
-import cn.afterturn.easypoi.excel.ExcelImportUtil;
-import cn.afterturn.easypoi.excel.entity.ImportParams;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONPath;
-import com.cn.entiy.ExcelEntity;
-import com.cn.updateFile.Constants;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-import org.apache.poi.ss.usermodel.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.util.*;
-import static io.restassured.RestAssured.given;
-
-/**
- * @Author： Athena
- * @Date： 2022/8/6 21:08
- * @Desc： 解析excel中的数据到实体类对象
- **/
-public class CommonUtils {
-    /*
+  /*
      * @ Author:Athena
      * @ Date 2022/8/6 21:11
      * @ Description //读取excel中的数据封装到实体类
@@ -435,6 +413,12 @@ public class CommonUtils {
 
     }
 
+
+```
+
+### 9、获取请求头
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/6 22:21
@@ -446,6 +430,12 @@ public class CommonUtils {
         Constants.headersMap.put(Constants.contentType, Constants.applicationJson);
         return Constants.headersMap;
     }
+
+```
+
+### 10、添加其他请求头
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/6 23:00
@@ -459,7 +449,11 @@ public class CommonUtils {
         Constants.headersMap.put(headerKey, headerValue);
         return Constants.headersMap;
     }
+```
 
+### 11、发起请求
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/6 23:02
@@ -485,6 +479,12 @@ public class CommonUtils {
         }
         return body;
     }
+
+```
+
+### 12、put请求单独方法
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/8 18:35
@@ -503,6 +503,13 @@ public class CommonUtils {
         }
         return  body;
     }
+
+
+```
+
+### 13、存储响应结果到map统一管理使用
+
+```
     /*
      * @ Author:Athena
      * @ Date 2022/8/7 0:09
@@ -519,6 +526,11 @@ public class CommonUtils {
         }
     }
 
+```
+
+### 14、将响应结果回写到excel中
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/7 8:40
@@ -550,7 +562,13 @@ public class CommonUtils {
         }
 
     }
-    /*
+  
+```
+
+### 15、断言响应结果
+
+```java
+  /*
      * @ Author:Athena
      * @ Date 2022/8/7 14:13
      * @ Description //断言响应结果
@@ -585,7 +603,14 @@ public class CommonUtils {
         }
         return assertResult;
     }
-    /*
+```
+
+
+
+### 16、请求参数可参数化配置
+
+```java
+  /*
      * @ Author:Athena
      * @ Date 2022/8/8 20:49
      * @ Description //请求参数可参数化配置
@@ -616,22 +641,11 @@ public class CommonUtils {
 
 ```
 
+
+
+### 17、测试解析excel数据封装到实体类对象
+
 ```java
-import com.alibaba.fastjson.JSONPath;
-import com.cn.entiy.ExcelEntity;
-import com.cn.updateFile.Constants;
-import com.cn.utils.CommonUtils;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-import org.testng.annotations.Test;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
 /**
  * @Author： Athena
  * @Date： 2022/8/6 21:47
@@ -653,6 +667,16 @@ public class testDemo {
         }
     }
 
+
+
+   
+```
+
+
+
+### 18、获取请求头已封装的方法测试
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/6 22:35
@@ -672,6 +696,14 @@ public class testDemo {
 
     }
 
+
+```
+
+
+
+### 19、新添加其他的请求头-测试Demo
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/6 22:46
@@ -691,6 +723,15 @@ public class testDemo {
         }
 
     }
+
+
+```
+
+
+
+### 20、调用发起请求方法Demo测试
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/7 8:08
@@ -710,7 +751,16 @@ public class testDemo {
         System.out.println(body);
     }
 
-    /*
+ 
+ 
+```
+
+
+
+### 21、封装响应结果到map类-demo测试
+
+```java
+   /*
      * @ Author:Athena
      * @ Date 2022/8/7 8:09
      * @ Description //封装响应结果到map类-demo测试
@@ -735,7 +785,14 @@ public class testDemo {
         }
     }
 
-    /*
+```
+
+
+
+### 22、回写响应内容到excel-demo测试
+
+```java
+   /*
      * @ Author:Athena
      * @ Date 2022/8/7 9:11
      * @ Description //回写响应内容到excel
@@ -751,6 +808,13 @@ public class testDemo {
         CommonUtils.backWriteResponseExcel(body, sheetNum, rowNum, cellNum);
     }
 
+```
+
+
+
+### 23、 断言响应结果--demo测试
+
+```
     /*
      * @ Author:Athena
      * @ Date 2022/8/7 14:46
@@ -770,6 +834,13 @@ public class testDemo {
 
     }
 
+```
+
+
+
+### 24、JSONPath的常用方法Demo
+
+```java
     /*
      * @ Author:Athena
      * @ Date 2022/8/7 16:53
@@ -795,7 +866,15 @@ public class testDemo {
         }
 
     }
-    /*
+ 
+```
+
+
+
+### 25、测试新增课程Case类发起请求成功Demo
+
+```java
+   /*
      * @ Author:Athena
      * @ Date 2022/8/8 16:38
      * @ Description //测试新增课程Case类发起请求成功Demo
@@ -830,7 +909,14 @@ public class testDemo {
         }System.out.println("新增课程："+response);
 
     }
-    /*
+```
+
+
+
+### 25、发送put请求demo
+
+```java
+ /*
      * @ Author:Athena
      * @ Date 2022/8/8 19:07
      * @ Description //网上资料接口  发送put请求demo
@@ -860,27 +946,108 @@ public class testDemo {
         System.out.println("Does Reponse contains 'Chris'? :" + response.asString().contains("Chris"));
 
     }
-    /*
-     * @ Author:Athena
-     * @ Date 2022/8/8 21:07
-     * @ Description //字符串替换Demo
-     * @ Param
-     * @ return
-     **/
-    @Test
-    public void strReplace(){
-        Map<String,Object> vars = new HashMap<>();
-        vars.put("${username}","admin");
-        vars.put("${password}","admin123");
-        String excelParams = "{\"username\":\"${username}\",\"password\":\"${password}\"}";
-        for(String key : vars.keySet()){
-            if (StringUtils.isNotBlank(excelParams)) {
-                excelParams = excelParams.replace(key, vars.get(key).toString());
+
+
+```
+
+### 26、*数据库连接*
+
+```java
+package com.databaseUtils;
+
+import org.apache.log4j.Logger;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+
+/**
+ * @Author： Athena
+ * @Date： 2025-03-17
+ * @Desc： 数据库连接
+ **/
+public class DatabaseConnection {
+    //定义日志记录器
+    private static Logger logger = Logger.getLogger(DatabaseConnection.class);
+    //1、定义常量配置文件，避免后期文件名变了好维护
+    private static final String PROPERTIES_FILE = "database.properties";
+    //2、声明静态变量connection连接，让整个类共享
+    //因为 final 关键字的作用是让变量在初始化后不能被修改，
+    // 而 connection 变量是在 static {} 代码块中被重新赋值的。
+    private static Connection connection = null;
+
+    //静态代码块，确保JDBC驱动加载
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            logger.error("数据库驱动加载失败!", e);
+            throw new RuntimeException("数据库驱动加载失败!", e);
+
+        }
+    }
+    public static Connection databaseConnection() {
+        //定义inputStream为全局变量。
+        InputStream inputStream = null;
+        //检查连接是否为空，确保只创建一个实例
+        if (connection == null) {
+            //当前线程进入 synchronized 代码块后，其他线程必须等待，直到当前线程执行完并释放锁。
+            synchronized (DatabaseConnection.class) {
+                //二次检查，防止并发创建多个连接（必须等其他线程释放再次创建）
+                if (connection == null) {//检查为空,才继续进行创建
+                    //从类路径（classpath）中加载 db_config.properties 配置文件，
+                    // 并返回一个 InputStream 输入流，让 Java 代码可以读取文件内容
+                    inputStream = DatabaseConnection.class.getResourceAsStream("/database.properties");
+                    //判断是否找到配置文件
+                    if (inputStream == null) {
+                        logger.error("无法找到配置文件:/database.properties" + PROPERTIES_FILE);
+                        throw new RuntimeException("无法找到配置文件:/database.properties" + PROPERTIES_FILE);
+                    }
+                }
             }
         }
-        System.out.println(excelParams);
-    }
 
+        //1、读取properties文件中的数据库连接url和用户名、密码
+        Properties properties = new Properties();
+        try {
+            properties.load(inputStream);
+            logger.info("数据库配置文件已成功读取！");
+        } catch (IOException e) {
+            logger.error("加载数据库配置文件失败" + e);
+            throw new RuntimeException("加载数据库配置文件失败" + e);
+        }finally {
+            //关闭inputStream释放资源
+            if(inputStream!=null){
+                try {
+                    inputStream.close();
+                    logger.info("数据库配置文件流已关闭！");
+                } catch (IOException e) {
+                    logger.error("关闭数据库配置文件流失败!", e);
+                    throw new RuntimeException("关闭数据库配置文件流失败!",e);
+
+                }
+            }
+        }
+        //获取数据库连接url
+        String url = properties.getProperty("db.url");
+        //读取数据库用户名
+        String username = properties.getProperty("db.username");
+        //读取数据库密码
+        String password = properties.getProperty("db.password");
+        //创建数据库连接
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+            logger.info("数据库连接成功！");
+        } catch (SQLException e) {
+            logger.error("数据库连接失败", e);
+            throw new RuntimeException("数据库连接失败", e);
+        }
+        return connection;
+    }
 }
 
 ```
