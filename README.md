@@ -24,20 +24,17 @@
 ### :bulb: 性能测试
 
 - [性能-基本概念](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E2%80%94%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5.md)
-
 - [性能-jmeter脚本](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-jmeter%E8%84%9A%E6%9C%AC.md)
-
 - [Jmeter-websocket|mq|dubbo协议](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-jmeter%E8%84%9A%E6%9C%AC2-%E6%B5%8B%E8%AF%95websocket_mq_dubbo%E4%B8%89%E7%A7%8D%E5%8D%8F%E8%AE%AE%E8%AF%B7%E6%B1%82.md)
-
 - [性能测试工具-wrk|ab|ngrinder](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-jmeter%E8%84%9A%E6%9C%AC3-%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7wrk_ab_ngrinder.md)
-
 - [性能测试场景设计](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-jmeter%E8%84%9A%E6%9C%AC4-%E6%80%A7%E8%83%BD%E5%9C%BA%E6%99%AF%E8%AE%BE%E8%AE%A1.md)
-
 - [jmeter-CLI无图形模式](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95-jmeter-CLI%E6%97%A0%E5%9B%BE%E5%BD%A2%E6%A8%A1%E5%BC%8F.md)
-
 - [性能监控工具整合](https://github.com/yjliu0808/Notebook/blob/master/docs/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%20-%20%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7.md)
-
 - [Jmeter分布式环境配置](https://github.com/yjliu0808/Notebook/blob/master/docs/Jmeter%E5%88%86%E5%B8%83%E5%BC%8F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE.md)
+- [CentOS Stream 8初始化与基础环境部署手册](https://github.com/yjliu0808/Notebook/blob/master/docs/CentOS%20Stream%208%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%8E%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C.md)
+- [CentOS Stream 8接口性能框架部署手册](https://github.com/yjliu0808/Notebook/blob/master/docs/CentOS%20Stream%208%E6%8E%A5%E5%8F%A3%E6%80%A7%E8%83%BD%E6%A1%86%E6%9E%B6%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C.md)
+- [Jenkins 集成 GitHub 实现 CICD 流水线](https://github.com/yjliu0808/Notebook/blob/master/docs/Jenkins%20%E9%9B%86%E6%88%90%20GitHub%20%E5%AE%9E%E7%8E%B0%20CICD%20%E6%B5%81%E6%B0%B4%E7%BA%BF.md)
+- [性能测试分析树](https://github.com/yjliu0808/Notebook/blob/master/docs/%E3%80%8A%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%88%86%E6%9E%90%E6%A0%91%E3%80%8B%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE.png)
 
 ### :wrench:常用软件
 
