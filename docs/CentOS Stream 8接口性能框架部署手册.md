@@ -1,4 +1,6 @@
-# 接口性能测试与监控框架操作手册
+# CentOS Stream 8接口性能框架部署手册
+
+
 
 [TOC]
 
@@ -4104,101 +4106,7 @@ jmeter -n -t login_test.jmx -l result.jtl -e -o report/
 | `-l result.jtl`        | 保存测试结果到 `.jtl` 文件 | `result.jtl` 会保存在**当前目录**                            |
 | `-e -o report/`        | 根据 `.jtl` 生成 HTML 报告 | `report/` 是输出目录，相对当前路径，自动创建                 |
 
-## ✅  十三、配置服务器 SSH 拉取 GitHub 仓库代码
-
- GitHub 仓库地址为：
-
-```
- git@github.com:yjliu0808/TESTCICD.git
-```
-
-🛠️ 第一步：配置本地 Git 用户信息（非必须，但建议设置）
-
-```
-git config --global user.name "yjliu0808"
-git config --global user.email "yjliu0808@163.com"
-```
-
-------
-
-🗝️ 第二步：生成 SSH 密钥对（用于 GitHub 鉴权）
-
-```
-ssh-keygen -t rsa -b 4096 -C "yjliu0808@163.com"
-```
-
-- 连续按 **Enter**（3 次）即可
-- 默认生成路径如下：
-  - 私钥：`~/.ssh/id_rsa`
-  - 公钥：`~/.ssh/id_rsa.pub`
-
-------
-
-📋 第三步：复制公钥并添加至 GitHub
-
-```
-cat ~/.ssh/id_rsa.pub
-```
-
-- 复制输出内容，到 GitHub 网站执行：
-- 打开 GitHub → 右上角头像 → Settings
-- 左侧栏点击「SSH and GPG keys」→ 点右上角绿色按钮 `New SSH key`
-- 填写信息：
-  - Title: `Jenkins SSH`
-  - Key: 粘贴 `id_rsa.pub` 的内容
-- 点击 **Add SSH key**
 
 
 
-- Title: `Jenkins SSH`
-- Key: 粘贴 `id_rsa.pub` 的内容
-
-📡 第四步：测试 SSH 连通性
-
-```
-ssh -T git@github.com
-```
-
-✅如果你看到以下内容说明成功：
-
-```
-Hi yjliu0808! You've successfully authenticated, but GitHub does not provide shell access.
-```
-
-------
-
-🔐 第五步：在 Jenkins 中添加 SSH 私钥凭据
-
-1. 进入 Jenkins：
-    `Jenkins > Manage Jenkins > Credentials > Global > Add Credentials`
-
-2. 添加信息如下：
-
-    | 字段        | 示例说明                       |
-    | ----------- | ------------------------------ |
-    | Kind        | SSH Username with private key  |
-    | Username    | `git`（固定值）                |
-    | Private Key | `Enter directly`，粘贴私钥内容 |
-    | 私钥内容    | `cat ~/.ssh/id_rsa` 的输出内容 |
-    | ID（可选）  | `github-ssh-key`               |
-    | Description | `GitHub SSH Key for TESTCICD`  |
-
-⚙️ 第六步：配置 Jenkins 项目拉取 Git 仓库
-
-打开你的 Jenkins 项目配置页面，设置如下内容：
-
-| 配置项           | 内容说明                                        |
-| ---------------- | ----------------------------------------------- |
-| Repository URL   | `git@github.com:yjliu0808/TESTCICD.git`         |
-| Credentials      | 选择上一步添加的 SSH 凭据（如：github-ssh-key） |
-| Branch Specifier | `*/main`（或你的实际分支）                      |
-| Script Path      | `Jenkinsfile`（默认即可）                       |
-
-🔍 第七步：点击构建按钮验证配置是否成功
-
-进入 Jenkins 项目 → 点击 **Build Now** → 成功拉代码说明配置完成！
-
-✅ 如果构建成功并拉取代码无误，则说明 SSH 拉取配置完成！
-
-## 🔄 性能测试执行闭环流程（从压测到可视化）
 
