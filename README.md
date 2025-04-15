@@ -52,6 +52,7 @@
 
 - [Activiti工作流管理系统API](https://github.com/yjliu0808/Notebook/blob/master/docs/Activiti%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FAPI.md)
 - [Athena用户项目接口API](https://github.com/yjliu0808/Notebook/blob/master/docs/Athena%E7%94%A8%E6%88%B7%E9%A1%B9%E7%9B%AE%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
+- [📙 图标参考手册](https://github.com/yjliu0808/Notebook/blob/master/docs/%F0%9F%93%99%20%E5%9B%BE%E6%A0%87%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C.md)
 
 ### :memo:后记
 
