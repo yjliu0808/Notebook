@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>综合性能分析工具</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: block;
+            padding: 20px;
+        }
+        .tool-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-size: 14px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .tool-container h2 {
+            font-size: 18px;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            width: 50%;
+        }
+        input[type="number"] {
+            padding: 6px;
+            width: 80%; /* 缩小输入框的宽度 */
+            font-size: 14px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            width: auto;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            background: #f0f0f0;
+            padding: 8px;
+            margin-top: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+        }
+        .standard-info {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: underline;
+        }
+        .standard-details {
+            display: none;
+            margin-top: 10px;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 左侧工具：带宽对比评估工具 -->
+<div class="tool-container">
+    <h2>📶 带宽对比评估工具</h2>
+
+    <div class="form-group">
+        <label for="recvInput">请输入 JMeter 报告中的接收 KB/s（下载）：</label>
+        <input type="number" id="recvInput" placeholder="例如：24.42">
+    </div>
+
+    <div class="form-group">
+        <label for="sendInput">请输入 JMeter 报告中的发送 KB/s（上传）：</label>
+        <input type="number" id="sendInput" placeholder="例如：8.14">
+    </div>
+
+    <div class="form-group">
+        <label for="dlMbpsInput">请输入测速网站的下载速度（Mbps）：</label>
+        <input type="number" id="dlMbpsInput" placeholder="例如：243">
+    </div>
+
+    <div class="form-group">
+        <label for="ulMbpsInput">请输入测速网站的上传速度（Mbps）：</label>
+        <input type="number" id="ulMbpsInput" placeholder="例如：66">
+    </div>
+
+    <details style="margin-top: 10px;">
+        <summary style="color: #000; font-weight: bold;">📘 Mbps 与 KB/s 单位换算说明（点击展开）</summary>
+        <div style="padding: 10px 0 0 0;">
+            <ul>
+                <li>1 Mbps = 1,000,000 bits/s</li>
+                <li>1 Byte = 8 bits</li>
+                <li>所以 1 Mbps = 125,000 Bytes/s ≈ <strong>125 KB/s</strong></li>
+                <li>例如：10 Mbps = 1250 KB/s</li>
+            </ul>
+        </div>
+    </details>
+
+    <div style="margin-top: 15px; display: flex; align-items: center; gap: 10px;">
+        <button onclick="compareBandwidth()" id="analyzeBtn">📊 开始分析</button>
+        <span style="font-size: 12px; color: #555;"><strong>点击按钮进行带宽使用率分析，判断是否存在网络瓶颈</strong></span>
+    </div>
+
+    <div class="output" id="output"></div>
+</div>
+
+<!-- 右侧工具：API 性能测试分析工具 -->
+<div class="tool-container">
+    <h2>API 性能测试分析工具</h2>
+
+    <!-- 数据输入表单 -->
+    <div class="form-group">
+        <label for="api_response_time">API 响应时间 (毫秒):</label>
+        <input type="number" id="api_response_time" placeholder="输入 API 响应时间" required>
+    </div>
+    <div class="form-group">
+        <label for="api_throughput">API 吞吐量 (次/秒):</label>
+        <input type="number" id="api_throughput" placeholder="输入 API 吞吐量" required>
+    </div>
+    <div class="form-group">
+        <label for="api_concurrent_users">API 并发用户数:</label>
+        <input type="number" id="api_concurrent_users" placeholder="输入 API 并发用户数" required>
+    </div>
+    <div class="form-group">
+        <label for="api_error_rate">API 错误率 (%):</label>
+        <input type="number" id="api_error_rate" placeholder="输入 API 错误率" required>
+    </div>
+
+    <!-- 分析按钮 -->
+    <div>
+        <button class="button" onclick="analyzePerformance()">📊 开始分析</button>
+    </div>
+
+    <!-- 展开/收缩标准说明 -->
+    <div class="standard-info" onclick="toggleStandardDetails()">点击查看API标准说明</div>
+    <div class="standard-details" id="standard-details">
+        <h3>API 性能测试标准</h3>
+        <ul>
+            <li><b>API 响应时间：</b>理想值应小于 1 秒；如果大于 3 秒，可能会影响系统性能。</li>
+            <li><b>API 吞吐量：</b>理想值应大于 200 次/秒。</li>
+            <li><b>API 并发用户数：</b>理想值应大于 1000 用户。</li>
+            <li><b>错误率：</b>理想情况下，错误率应为 0%，在高负载情况下，0 - 1% 的错误率是可以接受的。</li>
+        </ul>
+    </div>
+
+    <!-- 显示分析结果 -->
+    <div class="result" id="result" style="display:none;">
+        <h3>API 性能分析结论</h3>
+        <p id="response_time_analysis"></p>
+        <p id="throughput_analysis"></p>
+        <p id="concurrent_users_analysis"></p>
+        <p id="error_rate_analysis"></p>
+    </div>
+</div>
+
+<script>
+    // 带宽对比评估工具的功能
+    function compareBandwidth() {
+        const recv = parseFloat(document.getElementById('recvInput').value) || 0;
+        const send = parseFloat(document.getElementById('sendInput').value) || 0;
+        const dlMbps = parseFloat(document.getElementById('dlMbpsInput').value) || 0;
+        const ulMbps = parseFloat(document.getElementById('ulMbpsInput').value) || 0;
+
+        const totalUsed = recv + send;
+        const dlKBps = dlMbps * 125;
+        const ulKBps = ulMbps * 125;
+        const totalAvailable = dlKBps + ulKBps;
+        const usagePercent = ((totalUsed / totalAvailable) * 100).toFixed(2);
+
+        let html = "<strong>📊 网络瓶颈分析结果</strong><br><br>";
+        html += "<table><tr><th>类别</th><th>上传 (KB/s)</th><th>下载 (KB/s)</th><th>合计 (KB/s)</th></tr>";
+        html += `<tr><td>🧪 实际压测使用</td><td>${send}</td><td>${recv}</td><td>${totalUsed.toFixed(2)}</td></tr>`;
+        html += `<tr><td>📶 你网络能跑</td><td>${ulKBps.toFixed(0)}</td><td>${dlKBps.toFixed(0)}</td><td>${totalAvailable.toFixed(0)}</td></tr>`;
+        html += `</table><br><strong>🔍 带宽使用率：</strong> ${totalUsed.toFixed(2)} / ${totalAvailable.toFixed(0)} = ${usagePercent}%<br>`;
+        html += usagePercent > 80 ? `⚠️ <strong>可能存在带宽瓶颈，请检查网络能力！</strong>` : `✅ <strong>网络带宽充足，当前压测不是网络瓶颈。</strong>`;
+
+        document.getElementById('output').innerHTML = html;
+    }
+
+    // API 性能测试工具的功能
+    function analyzePerformance() {
+        var apiResponseTime = document.getElementById('api_response_time').value;
+        var apiThroughput = document.getElementById('api_throughput').value;
+        var apiConcurrentUsers = document.getElementById('api_concurrent_users').value;
+        var apiErrorRate = document.getElementById('api_error_rate').value;
+
+        var responseTimeInSeconds = (apiResponseTime / 1000).toFixed(3);
+
+        var responseTimeAnalysis = apiResponseTime > 3000 ? `当前 API 响应时间为 ${responseTimeInSeconds} 秒（建议 < 1 秒）。` :
+            apiResponseTime > 1000 ? `当前 API 响应时间为 ${responseTimeInSeconds} 秒（建议优化，目标 < 1 秒）。` :
+            `当前 API 响应时间为 ${responseTimeInSeconds} 秒（符合目标）。`;
+
+        var throughputAnalysis = apiThroughput < 200 ? `当前 API 吞吐量为 ${apiThroughput} 次/秒（建议 > 200 次/秒）。` :
+            apiThroughput < 500 ? `当前 API 吞吐量为 ${apiThroughput} 次/秒（适中，建议 > 200 次/秒）。` :
+            `当前 API 吞吐量为 ${apiThroughput} 次/秒（符合目标）。`;
+
+        var concurrentUsersAnalysis = apiConcurrentUsers < 1000 ? `当前 API 并发用户数为 ${apiConcurrentUsers}（建议 > 1000 用户）。` :
+            `当前 API 并发用户数为 ${apiConcurrentUsers}（符合目标）。`;
+
+        var errorRateAnalysis = apiErrorRate > 1 ? `当前 API 错误率为 ${apiErrorRate}%（建议 ≤ 1%）。` :
+            apiErrorRate > 0 ? `当前 API 错误率为 ${apiErrorRate}%（可接受，但建议更低）。` :
+            `当前 API 错误率为 ${apiErrorRate}%（符合目标）。`;
+
+        document.getElementById('response_time_analysis').innerText = "1. " + responseTimeAnalysis;
+        document.getElementById('throughput_analysis').innerText = "2. " + throughputAnalysis;
+        document.getElementById('concurrent_users_analysis').innerText = "3. " + concurrentUsersAnalysis;
+        document.getElementById('error_rate_analysis').innerText = "4. " + errorRateAnalysis;
+
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
