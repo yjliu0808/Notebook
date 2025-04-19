@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>带宽对比评估工具</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      margin: 10px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .output {
+      background: #f0f0f0;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f8f8f8;
+    }
+  </style>
+</head>
+<body>
+  <h2>📶 估算是否存在网络瓶颈</h2>
+
+  <label>请输入 JMeter 报告中的接收 KB/s（下载）：</label>
+  <input type="number" id="recvInput" placeholder="例如：24.42">
+
+  <label>请输入 JMeter 报告中的发送 KB/s（上传）：</label>
+  <input type="number" id="sendInput" placeholder="例如：8.14">
+
+  <div style="margin-bottom: 10px; font-size: 16px;">👉 可前往 <a href="https://www.speedtest.net" target="_blank">https://www.speedtest.net</a> 进行测速</div>
+  <label>请输入测速网站的下载速度（Mbps）：</label>
+  <input type="number" id="dlMbpsInput" placeholder="例如：243">
+
+  <label>请输入测速网站的上传速度（Mbps）：</label>
+  <input type="number" id="ulMbpsInput" placeholder="例如：66">
+
+  <details style="margin-top: 10px;">
+    <summary style="color: #000; font-weight: bold;">📘 Mbps 与 KB/s 单位换算说明（点击展开）</summary>
+    <div style="padding: 10px 0 0 0;">
+      <ul>
+        <li>1 Mbps = 1,000,000 bits/s</li>
+        <li>1 Byte = 8 bits</li>
+        <li>所以 1 Mbps = 125,000 Bytes/s ≈ <strong>125 KB/s</strong></li>
+        <li>例如：10 Mbps = 1250 KB/s</li>
+      </ul>
+    </div>
+  </details>
+
+  <div style="margin-top: 30px; display: flex; align-items: center; gap: 10px;">
+    <button onclick="compareBandwidth()" id="analyzeBtn" style="background-color:#007bff; color:white; border:none; border-radius:6px; padding:10px 20px; font-size:16px; transition: background-color 0.3s;">📊 分析</button>
+    <span style="font-size: 14px; color: #555;"><strong>点击按钮进行带宽使用率分析，判断是否存在网络瓶颈</strong></span>
+  </div>
+
+  <div class="output" id="output"></div>
+
+  <script>
+    const button = document.getElementById('analyzeBtn');
+    const originalText = button.innerHTML;
+
+    button.addEventListener('mouseover', function() {
+      this.style.backgroundColor = '#0056b3';
+    });
+    button.addEventListener('mouseout', function() {
+      this.style.backgroundColor = '#007bff';
+    });
+
+    function compareBandwidth() {
+      button.disabled = true;
+      button.innerHTML = '⏳ 分析中...';
+
+      setTimeout(() => {
+        const recv = parseFloat(document.getElementById('recvInput').value) || 0;
+        const send = parseFloat(document.getElementById('sendInput').value) || 0;
+        const dlMbps = parseFloat(document.getElementById('dlMbpsInput').value) || 0;
+        const ulMbps = parseFloat(document.getElementById('ulMbpsInput').value) || 0;
+
+        const totalUsed = recv + send;
+        const dlKBps = dlMbps * 125;
+        const ulKBps = ulMbps * 125;
+        const totalAvailable = dlKBps + ulKBps;
+        const usagePercent = ((totalUsed / totalAvailable) * 100).toFixed(2);
+
+        let html = "<strong>📊 网络瓶颈分析结果</strong><br><br>";
+        html += "<table><tr><th>类别</th><th>上传 (KB/s)</th><th>下载 (KB/s)</th><th>合计 (KB/s)</th></tr>";
+        html += `<tr><td>🧪 实际压测使用</td><td>${send}</td><td>${recv}</td><td>${totalUsed.toFixed(2)}</td></tr>`;
+        html += `<tr><td>📶 你网络能跑</td><td>${ulKBps.toFixed(0)}</td><td>${dlKBps.toFixed(0)}</td><td>${totalAvailable.toFixed(0)}</td></tr>`;
+        html += `</table><br><strong>🔍 带宽使用率：</strong> ${totalUsed.toFixed(2)} / ${totalAvailable.toFixed(0)} = ${usagePercent}%<br>`;
+        html += usagePercent > 80 ? `⚠️ <strong>可能存在带宽瓶颈，请检查网络能力！</strong>` : `✅ <strong>网络带宽充足，当前压测不是网络瓶颈。</strong>`;
+
+        document.getElementById('output').innerHTML = html;
+        button.disabled = false;
+        button.innerHTML = originalText;
+      }, 300);
+    }
+  </script>
+</body>
+</html>
