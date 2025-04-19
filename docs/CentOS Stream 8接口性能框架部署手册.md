@@ -78,7 +78,7 @@ JMeter HTML 报告 / Allure 报告生成
 
 ## ✅ 六、本地压测机安装-  JMeter
 
-### 📖 Prometheus 简介
+### 📖JMeter简介
 
 > **Apache JMeter 是一款开源的性能测试工具，主要用于接口压力测试、负载测试与性能验证。**
 
@@ -253,6 +253,14 @@ prometheus.exe
 
 访问验证：http://localhost:9090
 
+备注：
+
+```
+# linux启动命令：
+./prometheus --config.file=prometheus.yml
+
+```
+
 
 
 ------
@@ -371,7 +379,298 @@ Prometheus 每隔几秒，会按照配置中的 targets:
 | PromQL 查询能查出指标数据    | ✅        | 指标抓取成功，入库成功        |
 | 没有报错日志或启动异常       | ✅        | 安装无误                      |
 
+### 🔧 设置Prometheus 开机自启
+
+- > 针对linux系统
+
+🔢 步骤一：创建 systemd 服务文件
+
+```
+
+sudo vim /etc/systemd/system/prometheus.service
+```
+
+粘贴以下内容（按你实际路径替换）：
+
+```
+[Unit]
+Description=Prometheus Monitoring
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/athena/Prometheus/prometheus-2.53.4.linux-amd64
+ExecStart=/athena/Prometheus/prometheus-2.53.4.linux-amd64/prometheus --config.file=/athena/Prometheus/prometheus-2.53.4.linux-amd64/prometheus.yml --storage.tsdb.path=/athena/Prometheus/prometheus-2.53.4.linux-amd64/data
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+```
+
 ------
+
+🔢 步骤二：重载 systemd 配置
+
+```
+sudo systemctl daemon-reload
+```
+
+------
+
+🔢 步骤三：设置开机自启
+
+```
+sudo systemctl enable prometheus
+```
+
+------
+
+🔢步骤四：立即启动 Prometheus
+
+```
+sudo systemctl start prometheus
+```
+
+------
+
+🔢 步骤五：查看运行状态
+
+```
+sudo systemctl status prometheus
+```
+
+若看到 `active (running)` 则表示 Prometheus 成功运行，并将会开机自启。
+
+------
+
+### 🌐 默认访问地址
+
+```
+http://129.28.122.208:9090
+```
+
+确保防火墙已放通 `9090` 端口。
+
+### 📥 安装 Prometheus PushGateway
+
+✅ 一、什么是 PushGateway？
+
+> `PushGateway` 是 Prometheus 的中转组件，用于接收 JMeter 这种“主动推送数据”的客户端数据，再交给 Prometheus 拉取。
+
+------
+
+🚀 二、安装 Prometheus PushGateway
+
+```
+# 进入你的安装目录，比如 /opt/tools
+cd /opt/tools
+
+# 下载最新 PushGateway
+    wget https://github.com/prometheus/pushgateway/releases/download/v1.6.2/pushgateway-1.6.2.linux-amd64.tar.gz
+
+# 解压
+tar -zxvf pushgateway-1.6.2.linux-amd64.tar.gz
+cd pushgateway-1.6.2.linux-amd64
+
+# 启动
+nohup ./pushgateway &
+
+# 默认监听在 http://localhost:9091
+#http://129.28.122.208:9091/metrics
+```
+
+### 🔧 设置 Prometheus PushGateway开机自启
+
+🛠️ 第一步：创建服务文件
+
+执行命令创建 service 文件：
+
+```
+vi /etc/systemd/system/pushgateway.service
+```
+
+复制粘贴以下内容（路径已按你实际情况设置）：
+
+```
+[Unit]
+Description=Prometheus PushGateway
+After=network.target
+
+[Service]
+WorkingDirectory=/athena/Prometheus/pushgateway-1.6.2.linux-amd64
+ExecStart=/athena/Prometheus/pushgateway-1.6.2.linux-amd64/pushgateway --web.listen-address=":9091"
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+------
+
+🛠️ 第二步：重载 systemd 并设置开机自启
+
+```
+systemctl daemon-reload
+systemctl reset-failed pushgateway
+systemctl start pushgateway
+systemctl status pushgateway
+
+```
+
+------
+
+✅ 三、Prometheus 中添加 PushGateway 配置
+
+修改 `prometheus.yml`，添加以下 job：
+
+```
+yaml复制编辑scrape_configs:
+  - job_name: 'jmeter'
+    static_configs:
+      - targets: ['localhost:9091']  # 改成你 PushGateway 所在服务器 IP
+```
+
+```
+global:
+  scrape_interval: 5s        # 每 5 秒采集一次数据，适合压测监控
+  evaluation_interval: 5s    # 每 5 秒评估一次告警规则（可忽略）
+
+scrape_configs:
+
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['129.28.122.208:9090']   # 监控 Prometheus 自身运行情况
+
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['1.12.52.242:9100']   # 替换为你的服务器 IP + Node Exporter 端口
+
+  - job_name: 'jmx_exporter'
+    static_configs:
+      - targets: ['1.12.52.242:12345']  # 替换为你 Java 服务开启 JMX Exporter 的端口
+  - job_name: 'jmeter'
+    static_configs:
+      - targets: ['129.28.122.208:9091']  # # 改成你 PushGateway 所在服务器 IP  
+
+```
+
+然后重新加载 Prometheus 配置：
+
+```
+curl -X POST http://129.28.122.208:9090/-/reload
+```
+
+------
+
+✅ 四、JMeter 中配置 PushGateway 推送
+
+### 📥 安装JMeter 安装 Prometheus 监听器
+
+🔧 方法 1：使用插件管理器安装：
+
+1. 打开 JMeter → 菜单栏选择：
+
+   ```
+   Options → Plugins Manager
+   ```
+
+2. 在“Available Plugins”中搜索：
+
+   ```
+   Prometheus
+   ```
+
+3. 勾选并安装：
+
+   ```
+   JMeter Prometheus Listener
+   ```
+
+4. 安装后重启 JMeter。
+
+🔧 方法 2：官网直接下载：https://jmeter-plugins.org/
+
+------
+
+✅ 步骤二：添加 Backend Listener（推送到 PushGateway）
+
+1. 在测试计划（Test Plan）下，**右键 → 添加 → 监听器 → Backend Listener**：
+
+   ```
+   
+   添加 → 监听器 → Backend Listener
+   ```
+
+2. 配置 Backend Listener，如下：
+
+| 字段                                | 设置                                                         |
+| ----------------------------------- | ------------------------------------------------------------ |
+| **Backend Listener Implementation** | `io.github.jocull.prometheus.PrometheusBackendListenerClient` |
+| **classname**                       | 自动填，无需更改                                             |
+
+------
+
+## ✅ 步骤三：添加 PushGateway 参数（很关键）
+
+点击下方的 **“添加”按钮** 添加这些参数 👇：
+
+
+
+| 参数名                           | 示例值                                          |
+| -------------------------------- | ----------------------------------------------- |
+| `metrics.prefix`                 | `jmeter`                                        |
+| `summaryOnly`                    | `false`                                         |
+| `samplersList`                   | 空即可（表示所有 Sampler 都统计）               |
+| `prometheus.pushgateway.address` | `http://<你的服务器IP>:9091/metrics/job/jmeter` |
+
+⚠️ 注意：
+
+- `job=jmeter` 是 Prometheus 中的 job 名
+- 不要漏掉 `/metrics/job/jmeter`
+
+------
+
+## ✅ 五、验证是否接通（两种方法）
+
+### 方法 1：访问 PushGateway Web 页面
+
+浏览器访问：
+
+```
+cpp
+
+
+复制编辑
+http://<你的服务器IP>:9091
+```
+
+看到 `/metrics` 页面不报错 ✅
+
+### 方法 2：Prometheus 中看到指标
+
+访问：
+
+```
+arduino
+
+
+复制编辑
+http://localhost:9090
+```
+
+执行查询：
+
+```
+nginx复制编辑jmeter_tps
+jmeter_response_time
+```
+
+------
+
+
 
 ## ✅ 八、本地压测机安装- Grafana
 
@@ -383,6 +682,15 @@ Prometheus 每隔几秒，会按照配置中的 targets:
 
 - 官网：https://grafana.com/grafana/download
 - 下载zip安装包解压后即可
+- ```
+  cd /athena/Grafana
+  wget https://dl.grafana.com/enterprise/release/grafana-enterprise-11.6.0.linux-amd64.tar.gz
+  tar -zxvf grafana-enterprise-11.6.0.linux-amd64.tar.gz
+  cd grafana-enterprise-11.6.0
+  
+  ```
+
+  
 
 ### ▶️启动 Grafana 服务
 
@@ -3525,6 +3833,63 @@ Prometheus 每隔几秒，会按照配置中的 targets:
 }
 ```
 
+### 🔧 设置Grafana开机自启
+
+- > 针对linux系统
+
+🔢 第一步：创建 `grafana.service` 文件
+
+```
+sudo vim /etc/systemd/system/grafana.service
+```
+
+粘贴以下内容（按你的路径调整）：
+
+```
+[Unit]
+Description=Grafana Server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/athena/Grafana/grafana-v11.6.0
+ExecStart=/athena/Grafana/grafana-v11.6.0/bin/grafana-server \
+  --config=/athena/Grafana/grafana-v11.6.0/conf/defaults.ini \
+  --homepath=/athena/Grafana/grafana-v11.6.0
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+```
+
+------
+
+🔢 第二步：启动服务并设置自启
+
+```
+sudo systemctl daemon-reload
+sudo systemctl enable grafana.service
+sudo systemctl start grafana.service
+sudo systemctl status grafana.service
+```
+
+看到 `Active: active (running)` 即代表启动成功。
+
+------
+
+🔢第三步：验证端口监听
+
+Grafana 默认端口是 `3000`：
+
+```
+sudo ss -tulnp | grep 3000
+```
+
+------
+
+
+
 ###  🚨Grafana模板导入失败排查点
 
 - 在导入 Grafana 仪表盘模板失败或图表无数据时，可按以下维度进行排查：
@@ -3551,6 +3916,8 @@ Prometheus 每隔几秒，会按照配置中的 targets:
 
   - 打开 `config.yaml`，确认是否配置了实际存在的 MBean 指标
     - 避免拼写错误或不兼容的 `pattern`
+  
+  
 
 ## ✅ 九、 服务器安装 -Node Exporter
 
@@ -3594,7 +3961,7 @@ firewall-cmd --reload
 🔢 第一步：创建 systemd 服务文件：
 
 ```
-sudo nano /etc/systemd/system/node_exporter.service
+sudo vim /etc/systemd/system/node_exporter.service
 ```
 
 🔢 第二步：编辑 systemd 服务文件：粘贴以下内容（根据实际安装路径调整）
@@ -3610,7 +3977,7 @@ After=network.target
 [Service]
 User=nobody
 # 修改为你的实际路径
-ExecStart=/athena/Node_Exporter/node_exporter-1.7.0.linux-amd64/node_exporter
+ExecStart=/athena/NodeExporter/node_exporter-1.7.0.linux-amd64/node_exporter
 Restart=on-failure
 
 [Install]
@@ -3679,7 +4046,8 @@ wget https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0
 # 新建目录 `config` 用于存放配置文件：位置可以任意。eg:cd /athena/JMX_Exporter
 
 mkdir config
-vim config/config.yaml
+sudo vim /athena/JMXExporter/config/config.yaml
+
 ```
 
 - ✏️编辑配置文件 `config.yaml`
@@ -3789,8 +4157,8 @@ After=network.target
 
 [Service]
 User=root
-WorkingDirectory=/athena/mall
-ExecStart=/athena/jdk/jdk1.8.0_371/bin/java -javaagent:/athena/JMX_Exporter/jmx_prometheus_javaagent-0.20.0.jar=12345:/athena/JMX_Exporter/configs/config.yaml -jar /athena/mall/tuling-admin-0.0.1-SNAPSHOT.jar
+WorkingDirectory=/athena/Mall
+ExecStart=/athena/jdk/jdk1.8.0_371/bin/java -javaagent:/athena/JMXExporter/jmx_prometheus_javaagent-0.20.0.jar=12345:/athena/JMXExporter/config/config.yaml -jar /athena/Mall/tuling-admin-0.0.1-SNAPSHOT.jar
 SuccessExitStatus=143
 Restart=always
 RestartSec=10
@@ -3919,6 +4287,8 @@ systemctl restart prometheus
 
 ### 📥 下载 Server Agent
 
+> 由于 ServerAgent 是基于 Java 的工具，**必须先安装 Java** 才能运行。
+
 ```
 cd /athena/ServerAgent
 #可下载上传
@@ -3995,7 +4365,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/athena/ServerAgent/ServerAgent-2.2.3
-ExecStart=/athena/ServerAgent/ServerAgent-2.2.3/startAgent.sh
+ExecStart=/athena/jdk/jdk1.8.0_371/bin/java -jar /athena/ServerAgent/ServerAgent-2.2.3/CMDRunner.jar --tool PerfMonAgent --udp-port 4444 --tcp-port 4444 --bind 0.0.0.0
 Restart=on-failure
 
 [Install]

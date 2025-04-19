@@ -297,7 +297,7 @@ Hi yjliu0808! You've successfully authenticated, but GitHub does not provide she
     | **Which events would you like to trigger this webhook?** | 勾选 **Just the `push` event**               |
     | **Active**                                               | 勾选 **Active**（启用 Webhook）              |
 
-**📌配置完成验证方式：**
+**📌git push后配置完成验证方式：**
 
 **Webhooks模块内：点击链接进去详情：有[Recent Deliveries](https://github.com/yjliu0808/api_auto_mall_v1.5test/settings/hooks/540042535?tab=deliveries)可以查看是否有push记录**
 
@@ -520,5 +520,4 @@ Jenkins 接收到通知
 - 自动化流程配置完成，稳定运行
 
 ------
-
 

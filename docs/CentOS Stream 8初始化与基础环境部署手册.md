@@ -151,9 +151,17 @@ WantedBy=multi-user.target
 使用以下命令重新加载 `systemd` 配置并启动服务：
 
 ```
-$ sudo systemctl daemon-reload
-$ sudo systemctl start mall
-$ sudo systemctl enable mall
+# 1. 编辑服务文件
+sudo vim /etc/systemd/system/tuling-admin.service
+
+# 2. 重新加载 systemd 配置
+sudo systemctl daemon-reload
+
+# 3. 重启服务测试是否正常运行
+sudo systemctl restart tuling-admin
+
+# 4. 查看状态确认成功
+sudo systemctl status tuling-admin
 ```
 
 ## 📥安装  Jenkins
