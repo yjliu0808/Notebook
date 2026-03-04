@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "B_知识/软件测试学习笔记/7. 安全测试/安全测试学习笔记.md",
+                "file": "B_知识/软件测试学习笔记/16.个人简历/面试保卫手册.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "安全测试学习笔记"
+              "title": "面试保卫手册"
             }
           }
         ]
@@ -37,7 +37,7 @@
           "type": "file-explorer",
           "state": {
             "sortOrder": "alphabetical",
-            "autoReveal": false
+            "autoReveal": true
           },
           "icon": "lucide-folder-closed",
           "title": "Files"
@@ -98,7 +98,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "B_知识/软件测试学习笔记/7. 安全测试/安全测试学习笔记.md",
+            "file": "B_知识/软件测试学习笔记/16.个人简历/面试保卫手册.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -108,7 +108,7 @@
             "unlinkedCollapsed": true
           },
           "icon": "links-coming-in",
-          "title": "Backlinks"
+          "title": "反向链接"
         }
       },
       {
@@ -137,68 +137,89 @@
           "icon": "lucide-list",
           "title": "Outline"
         }
+      },
+      {
+        "id": "35c75ac1f3e5c9c4",
+        "type": "leaf",
+        "state": {
+          "type": "BC-matrix",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "BC-matrix"
+        }
+      },
+      {
+        "id": "fc2643394e5c8dbf",
+        "type": "leaf",
+        "state": {
+          "type": "BC-tree",
+          "state": {},
+          "icon": "lucide-ghost",
+          "title": "BC-tree"
+        }
       }
     ],
     "currentTab": 0
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "templater-obsidian:Templater": false
     }
   },
   "active": "724af5a00af4bdf5",
   "lastOpenFiles": [
-    "B_知识/软件测试学习笔记/10. 测试管理与质量保障/index.md",
-    "B_知识/软件测试学习笔记/10. 测试管理与质量保障",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/ngrinder2.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/jar2.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/性能测试-项目6.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/tomcat1.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/appsdk.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/tomcat2.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/adb1.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/HTMLDOM.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/性能测试-项目1.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/github_ssh_配置.png",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/pics/courgette.log",
-    "B_知识/软件测试学习笔记/14. 测试开发与平台建设/index.md",
-    "B_知识/软件测试学习笔记/14. 测试开发与平台建设",
-    "B_知识/软件测试学习笔记/15. AI与智能测试/index.md",
-    "B_知识/软件测试学习笔记/11. 测试工具与平台生态/Fiddler作为代理服务器.md",
-    "B_知识/软件测试学习笔记/11. 测试工具与平台生态/jmeter安装.md",
-    "B_知识/软件测试学习笔记/13. 附录与资源/Athena用户项目接口文档.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/CentOS Stream 8初始化与基础环境部署手册.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/Jenkins 集成 GitHub 实现 CICD 流水线.md",
-    "B_知识/软件测试学习笔记/index.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/Linux系统中安装mysql.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/github配置指南.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/Linux系统中配置Tomcat.md",
-    "B_知识/软件测试学习笔记/9. 项目实践/index.md",
-    "B_知识/软件测试学习笔记/9. 项目实践",
-    "B_知识/软件测试学习笔记/13. 附录与资源/图标查看手册.html",
-    "B_知识/软件测试学习笔记/13. 附录与资源/📙 图标参考手册.md",
-    "B_知识/软件测试学习笔记/13. 附录与资源/index.md",
-    "B_知识/软件测试学习笔记/13. 附录与资源/Activiti工作流管理系统API.md",
-    "B_知识/软件测试学习笔记/13. 附录与资源/抖音.txt",
-    "B_知识/软件测试学习笔记/13. 附录与资源",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/Linux系统中配置jdk.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/index.md",
-    "B_知识/软件测试学习笔记/12. 学习与职业发展/index.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/Jmeter分布式环境配置.md",
-    "B_知识/软件测试学习笔记/11. 测试工具与平台生态/index.md",
-    "B_知识/软件测试学习笔记/11. 测试工具与平台生态/Git 常用命令速查手册.md",
-    "B_知识/软件测试学习笔记/11. 测试工具与平台生态/局域网内共享文件夹share.bat",
-    "B_知识/软件测试学习笔记/11. 测试工具与平台生态",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/持续集成工具Jenkins.md",
-    "B_知识/软件测试学习笔记/15. AI与智能测试/人工智能.md",
-    "B_知识/软件测试学习笔记/15. AI与智能测试",
-    "B_知识/软件测试学习笔记/12. 学习与职业发展/软件测试面试宝典.md",
-    "B_知识/软件测试学习笔记/12. 学习与职业发展/面试准备.md"
+    "B_知识/软件测试学习笔记/16.个人简历/码同学抖音专属面试题/码同学抖音专属面试题.md",
+    "A_目录/index.md",
+    "B_知识/软件测试学习笔记/16.个人简历/自我介绍.md",
+    "B_知识/软件测试学习笔记/16.个人简历/面试保卫手册.md",
+    "B_知识/软件测试学习笔记/16.个人简历/简历问题.md",
+    "index.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/性能测试-jmeter脚本.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/性能测试-jmeter-CLI无图形模式.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/性能测试 - 监控工具.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/解决：访问菜单有时候慢有时候不慢.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/《性能测试分析树》思维导图.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/18、MVCC与BufferPool缓存机制/MVCC与BufferPool缓存机制.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/17、Mysql事务隔离级别与锁机制/Mysql事务隔离级别与锁机制.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/一条sql在mysql中是如何执行的.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/14、Mysql索引底层数据结构与算法/Mysql索引底层数据结构与算法.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/04、JVM对象创建与内存分配机制深度剖析/JVM对象创建与内存分配机制深度剖析.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/03、JVM内存模型深度剖析与优化/02-JVM内存模型深度剖析与优化.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/03、JVM内存模型深度剖析与优化/00-JVM指令手册.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/03、JVM内存模型深度剖析与优化/扩展说明文档/jcmd打印线程栈.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/02、JAVA类加载机制升职加薪之旅.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/01、全面理解 JVM 虚拟机/01、全面理解 JVM 虚拟机.md",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/01、全面理解 JVM 虚拟机/扩展说明文档/什么是16进制.md",
+    "B_知识/软件测试学习笔记/2. 编程与脚本语言/java基础.md",
+    "B_知识/软件测试学习笔记/8. CICD与环境部署/Vue 2 项目完整生产环境打包与部署指南.md",
+    "B_知识/软件测试学习笔记/8. CICD与环境部署/cct-lhubdt部署/部署cct-lhubdt项目.md",
+    "B_知识/软件测试学习笔记/8. CICD与环境部署/cct-lhubdt部署/Windows 上安装和使用 nvm.md",
+    "B_知识/软件测试学习笔记/14. 测试开发与平台建设/未.md",
+    "B_知识/软件测试学习笔记/8. CICD与环境部署/cct-lhubdt部署/pics/nginx1.png",
+    "A.txt",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/pics/性能调优之mysql调优15.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/pics/性能调优之mysql调优16.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/pics/性能调优之mysql调优27.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.14.12.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.29.44.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.26.13.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.17.32.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.28.01.png",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/pics",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/扩展说明文档",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/18、MVCC与BufferPool缓存机制/pics",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/15、Explain详解与索引最佳实践/pics",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/01、全面理解 JVM 虚拟机/扩展说明文档",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/01、全面理解 JVM 虚拟机/pics",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/04、JVM对象创建与内存分配机制深度剖析/pics",
+    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/03、JVM内存模型深度剖析与优化/扩展说明文档"
   ]
 }

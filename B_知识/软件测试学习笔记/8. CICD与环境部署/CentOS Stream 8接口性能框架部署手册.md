@@ -63,16 +63,16 @@ JMeter HTML 报告 / Allure 报告生成
 
 ## ✅ 五、需要安装的工具清单
 
-| 安装机器       | 工具/服务                | 用途                                       | 安装后验证方式                            |
-| -------------- | ------------------------ | ------------------------------------------ | ----------------------------------------- |
-| **Windows 11** | JMeter                   | 发起接口压测                               | `jmeter.bat` 启动 GUI / 命令行执行 `.jmx` |
-|                | PerfMon 插件             | 采集远程服务器性能指标（Server Agent）     | 添加监听器可看到指标曲线                  |
-|                | Prometheus               | 收集 Node/JMX Exporter 指标                | 访问 `http://localhost:9090`              |
-|                | Grafana                  | 展示性能趋势图表                           | 访问 `http://localhost:3000`              |
-| **CentOS**     | API服务（你自己的）      | 被测接口                                   | curl 本地 IP 测试接口返回正常             |
-|                | Node Exporter            | 系统级监控（CPU、内存、磁盘）              | `http://<server_ip>:9100/metrics`         |
-|                | JMX Exporter（Java服务） | JVM 指标采集（GC、线程、内存）             | `http://<server_ip>:12345/metrics`        |
-|                | Server Agent             | 给 JMeter 提供资源指标监控（配合 PerfMon） | JMeter 配置 PerfMon 后采集成功            |
+| 安装机器           | 工具/服务                | 用途                            | 安装后验证方式                            |
+| -------------- | -------------------- | ----------------------------- | ---------------------------------- |
+| **Windows 11** | JMeter               | 发起接口压测                        | `jmeter.bat` 启动 GUI / 命令行执行 `.jmx` |
+|                | PerfMon 插件           | 采集远程服务器性能指标（Server Agent）     | 添加监听器可看到指标曲线                       |
+|                | Prometheus           | 收集 Node/JMX Exporter 指标       | 访问 `http://localhost:9090`         |
+|                | Grafana              | 展示性能趋势图表                      | 访问 `http://localhost:3000`         |
+| **CentOS**     | API服务（你自己的）          | 被测接口                          | curl 本地 IP 测试接口返回正常                |
+|                | Node Exporter        | 系统级监控（CPU、内存、磁盘）              | `http://<server_ip>:9100/metrics`  |
+|                | JMX Exporter（Java服务） | JVM 指标采集（GC、线程、内存）            | `http://<server_ip>:12345/metrics` |
+|                | Server Agent         | 给 JMeter 提供资源指标监控（配合 PerfMon） | JMeter 配置 PerfMon 后采集成功            |
 
 
 

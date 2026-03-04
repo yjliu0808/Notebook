@@ -48,8 +48,9 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 //修改密码为复杂一点的密码，云服务器防止病毒
 ALTER USER 'root'@'%' IDENTIFIED BY '123456';
 ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
-
-
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'gP%?qfZS>3/W';
+FLUSH PRIVILEGES;
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'gP%?qfZS>3/W';
 ```
 
 ## 📥安装 JDK 1.8
@@ -59,7 +60,7 @@ ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
 ```
 vim /etc/profile
 
-export JAVA_HOME=/athena/jdk/jdk1.8.0_371
+export JAVA_HOME=/athena/jdk/athena/jdk/jdk1.8.0_202
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PATH:$JAVA_HOME/bin
 
@@ -170,7 +171,7 @@ sudo systemctl status tuling-admin
 
 成功从 Jenkins 官方下载了 `jenkins.repo` 文件
 并保存到了 `/etc/yum.repos.d/` 目录中（这个目录是系统用来存放所有 YUM 仓库配置的地方）
-
+**注意更换自己的目录**
 ```
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 ```
@@ -201,7 +202,8 @@ sudo wget -O /usr/share/java/jenkins.war https://get.jenkins.io/war-stable/2.426
    sudo rpm --import jenkins.io-2023.key
    ```
 
-3.  **编辑 Jenkins 的 YUM 源配置文件**
+3.  **编辑 Jenkins 的 YUM 源配置文件**  
+   注意选择自己目录下面的jenkins.repo
 
    ```
    sudo vi /etc/yum.repos.d/jenkins.repo

@@ -1,34 +1,64 @@
-👉 [返回上级目录](obsidian://open?vault=Notebook&file=B_%E7%9F%A5%E8%AF%86%2Findex)  
+---
+author: Athena
+up: A_目录/index
+tags:
+  - 学习笔记
+created: 2025-11-09
+modified: 2025-11-09
+---
+# 👉 [返回上级目录](obsidian://open?vault=Notebook&file=B_%E7%9F%A5%E8%AF%86%2Findex)  
 # 🧭 软件测试学习笔记
 
 > 🎓 本知识库系统整理了软件测试从基础理论到项目实战的完整体系，涵盖功能、性能、安全、自动化与 CI/CD 部署等核心方向，支持 Dataview 自动生成导航。
 
 ---
-## 📚 章节导航（手动写的可读版）
- [1. 基础理论]()
- [2. 编程与脚本语言]()
- [3. Linux与系统操作]()
- [4. 数据库与数据验证]()
- [5. 自动化测试]()
- [6. 性能测试]()
- [7. 安全测试]()
- [8. CICD与环境部署]()
- [9. 项目实践]()
- [10. 测试管理与质量保障]()
- [11. 测试工具与平台生态]()
- [12. 学习与职业发展]()
- [13. 附录与资源]()
- [14. 测试开发与平台建设]()
- [15. AI与智能测试]()
+## 📚 章节导航
 
----
+```dataviewjs
 
-## 🚀 快速入口
+```
+```dataviewjs
+// ✅ 当前文件夹路径（例如 "B_知识"）
+const currentFolder = dv.current().file.folder;
 
-👉 [进入A_目录](obsidian://open?vault=Notebook&file=A_%E7%9B%AE%E5%BD%95%2Findex)   
-👉 [进入B_知识](obsidian://open?vault=Notebook&file=B_%E7%9F%A5%E8%AF%86%2Findex)  
-👉 [进入C_临时](obsidian://open?vault=Notebook&file=C_%E4%B8%B4%E6%97%B6%2Findex)  
-👉 [回到根目录](obsidian://open?vault=Notebook&file=index)
+// ✅ 收集所有下一级文件夹
+const subfolders = new Set();
+for (let page of dv.pages(`"${currentFolder}"`)) {
+  const relative = page.file.folder.replace(currentFolder + "/", "");
+  const firstSub = relative.split("/")[0];
+  if (firstSub && !firstSub.includes("/")) subfolders.add(firstSub);
+}
+
+// ✅ 转成数组并按“数字顺序 + 拼音”排序
+let sorted = [...subfolders].sort((a, b) => {
+  const numA = parseInt(a.match(/^\d+/)?.[0] || 999);
+  const numB = parseInt(b.match(/^\d+/)?.[0] || 999);
+  if (numA !== numB) return numA - numB;
+  return a.localeCompare(b, 'zh-Hans-CN');
+});
+
+// ✅ 让 "B_知识" 永远排最前（但不显示它）
+if (sorted.includes("B_知识")) {
+  sorted = sorted.filter(x => x !== "B_知识");
+}
+
+// ✅ 判断当前文件层级，自动生成正确路径
+for (let f of sorted) {
+  let linkPath = "";
+  if (currentFolder === "" || currentFolder === "A_目录") {
+    // 顶层或主目录（直接指向 B_知识/...）
+    linkPath = `B_知识/${f}/index`;
+  } else if (currentFolder === "B_知识") {
+    // B_知识层（避免重复 B_知识/B_知识）
+    linkPath = `B_知识/${f}/index`;
+  } else {
+    // 其他情况（正常拼接）
+    linkPath = `${currentFolder}/${f}/index`;
+  }
+  dv.paragraph(`- [[${linkPath}|${f}]]`);
+}
+
+```
 
 ---
 
@@ -41,22 +71,7 @@ sort file.mtime desc
 limit 5
 ```
 
-
-
----
-
-
-
-## 📈 使用提示
-
-- 🔁 自动目录由 **Dataview** 驱动，新增章节时会自动更新  
-- ✍️ 每个章节都有一个独立的 `index.md` 作为目录页  
-- 🧩 推荐启用插件：
-  - Dataview → 自动生成导航  
-  - Templater → 快速创建章节模板  
-  - Breadcrumbs → 层级路径导航  
-  - Hover Editor → 悬浮预览笔记  
-
 ---
 
 🗓️ 最后更新：`=dateformat(this.file.mtime, "yyyy-MM-dd HH:mm")`
+

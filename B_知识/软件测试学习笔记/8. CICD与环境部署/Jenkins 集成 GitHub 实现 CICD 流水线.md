@@ -300,7 +300,15 @@ Hi yjliu0808! You've successfully authenticated, but GitHub does not provide she
 **📌git push后配置完成验证方式：**
 
 **Webhooks模块内：点击链接进去详情：有[Recent Deliveries](https://github.com/yjliu0808/api_auto_mall_v1.5test/settings/hooks/540042535?tab=deliveries)可以查看是否有push记录**
+你要填入 Jenkins 中的 **GitHub Webhook 接收地址**：
 
+`http://<你的服务器IP或域名>:8080/github-webhook/`
+
+例如：
+
+`http://115.159.42.77:8080/github-webhook/`
+
+> ⚠️ 注意结尾一定要带 `/github-webhook/`，这是 Jenkins GitHub 插件的固定路径。
 ### 🔢步骤三：Jenkins新建任务
 
 1. 进入 Jenkins 管理界面

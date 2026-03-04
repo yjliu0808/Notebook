@@ -1,0 +1,5 @@
+[[MySQL 8.0 安装 (Ubuntu 24.04 专用)]]
+[[JDK 1.8安装 (Ubuntu 24.04 专用)]]
+[[Redis安装 (Ubuntu 24.04 专用)]]
+[[Nginx安装 (Ubuntu 24.04 专用)]]
+[[tuling-admin 和web_admin-前端 打包]]
