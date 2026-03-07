@@ -40,7 +40,7 @@
             "autoReveal": true
           },
           "icon": "lucide-folder-closed",
-          "title": "Files"
+          "title": "文件列表"
         }
       },
       {
@@ -175,10 +175,13 @@
   },
   "active": "724af5a00af4bdf5",
   "lastOpenFiles": [
-    "B_知识/软件测试学习笔记/16.个人简历/码同学抖音专属面试题/码同学抖音专属面试题.md",
+    "B_知识/软件测试学习笔记/16.个人简历/【宏利金融】自动化测试工程师技术笔试 2024.md",
+    "B_知识/index.md",
     "A_目录/index.md",
-    "B_知识/软件测试学习笔记/16.个人简历/自我介绍.md",
+    "Pasted image 20251206171958.png",
     "B_知识/软件测试学习笔记/16.个人简历/面试保卫手册.md",
+    "B_知识/软件测试学习笔记/16.个人简历/码同学抖音专属面试题/码同学抖音专属面试题.md",
+    "B_知识/软件测试学习笔记/16.个人简历/自我介绍.md",
     "B_知识/软件测试学习笔记/16.个人简历/简历问题.md",
     "index.md",
     "B_知识/软件测试学习笔记/6. 性能测试/性能测试-jmeter脚本.md",
@@ -200,8 +203,6 @@
     "B_知识/软件测试学习笔记/2. 编程与脚本语言/java基础.md",
     "B_知识/软件测试学习笔记/8. CICD与环境部署/Vue 2 项目完整生产环境打包与部署指南.md",
     "B_知识/软件测试学习笔记/8. CICD与环境部署/cct-lhubdt部署/部署cct-lhubdt项目.md",
-    "B_知识/软件测试学习笔记/8. CICD与环境部署/cct-lhubdt部署/Windows 上安装和使用 nvm.md",
-    "B_知识/软件测试学习笔记/14. 测试开发与平台建设/未.md",
     "B_知识/软件测试学习笔记/8. CICD与环境部署/cct-lhubdt部署/pics/nginx1.png",
     "A.txt",
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/pics/性能调优之mysql调优15.png",
@@ -211,7 +212,6 @@
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.29.44.png",
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.26.13.png",
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.17.32.png",
-    "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics/2025-08-29-16.28.01.png",
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/16、一条sql在mysql中是如何执行的/pics",
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/扩展说明文档",
     "B_知识/软件测试学习笔记/6. 性能测试/1.Performance Optimization/02、JAVA类加载机制/pics",
