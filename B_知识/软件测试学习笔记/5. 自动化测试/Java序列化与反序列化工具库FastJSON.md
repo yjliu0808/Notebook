@@ -1,4 +1,4 @@
-# **Java** 序列化与反序列化工具库FastJSON
+我# **Java** 序列化与反序列化工具库FastJSON
 
 ## 1. **简介**
 
@@ -10,7 +10,7 @@
     
 - **易于使用**：FastJSON 提供了简单易用的 API 接口，开发人员可以轻松地进行 JSON 数据的序列化与反序列化。
     
-- **兼容性强**：FastJSON 支持各种 Java 版本和平台，能够与大多数的 Java 应用程序兼容。
+- **兼容性强**：FastJSON 支持各种 Java 版本和首平台，能够与大多数的 Java 应用程序兼容。
     
 - **功能丰富**：FastJSON 除了基本的序列化与反序列化功能外，还支持自定义序列化规则、JSONPath 查询、以及 JSON 数据的增量更新等高级功能。
     
@@ -23,7 +23,7 @@
 
 **示例：**
 
-`import com.alibaba.fastjson.JSON;  public class SerializationExample {     public static void main(String[] args) {         Person person = new Person("Alice", 25);         // 将 Java 对象转换为 JSON 字符串         String jsonString = JSON.toJSONString(person);         System.out.println("Serialized JSON: " + jsonString);     } }  class Person {     private String name;     private int age;      public Person(String name, int age) {         this.name = name;         this.age = age;     }      // getter 和 setter 方法     public String getName() {         return name;     }      public void setName(String name) {         this.name = name;     }      public int getAge() {         return age;     }      public void setAge(int age) {         this.age = age;     } }`
+`import com.alibaba.fastjson.JSON;  public class SerializationExample {     public static void main(String[] args) {         Person person = new Person("Alice", 25);         // 将 Java 对象转换为 JSON^_^ 字符串         String jsonString = JSON.toJSONString(person);         System.out.println("Serialized JSON: " + jsonString);     } }  class Person {     private String name;     private int age;      public Person(String name, int age) {         this.name = name;         this.age = age;     }      // getter 和 setter 方法     public String getName() {         return name;     }      public void setName(String name) {         this.name = name;     }      public int getAge() {         return age;     }      public void setAge(int age) {         this.age = age;     } }`
 
 **输出：**
 
